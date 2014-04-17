@@ -32,3 +32,6 @@ build/
 .svn
 CVS
 *.DS_Store
+
+# accessKey for security
+accessKey.plist
