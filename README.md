@@ -8,7 +8,6 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 > * 文档的详细内容请查阅：
 
 #SDK环境要求
-------
 ##系统版本：
 > * iOS: 6.0及以上。
 > * OSX: 10.8及以上。
@@ -42,7 +41,6 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 > * Demo_OSX: 在Build Phases下Link Binary Libraries中添加libSCSSDK_OSX.a。
 
 #快速上手
-------
 ##设置accessKey、secretKey
 
 ```objective-c
@@ -544,8 +542,10 @@ GRPS0000000CANONICAL、GRPS000000ANONYMOUSE
 	'GRPS0000000CANONICAL' :  [ "read", "write" ]
 }
 > * 代码示例：
+```objective-c
 SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:SCSACLCanonicalUserGroupGranteeID] autorelease];
     SCSGrant *grant = [[[SCSGrant alloc] initWithGrantArray:@[SCSACLGrantRead, SCSACLGrantReadACP, SCSACLGrantWrite, SCSACLGrantWriteACP]] autorelease];
+```
 
 ###获取Object的ACL信息
 ```objective-c
