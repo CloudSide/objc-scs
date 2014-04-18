@@ -27,7 +27,7 @@
 
 - (NSString *)kind
 {
-	return @"Bucket list";
+	return SCSOperationKindBucketList;
 }
 
 - (NSString *)requestHTTPVerb

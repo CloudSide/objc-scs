@@ -53,7 +53,7 @@ static NSString *SCSOperationInfoGetACLOperationObjectKey = @"SCSOperationInfoGe
 
 - (NSString *)kind
 {
-	return @"Get acl";
+	return SCSOperationKindGetACL;
 }
 
 - (NSString *)requestHTTPVerb

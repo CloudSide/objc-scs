@@ -98,7 +98,7 @@ static NSString *SCSOperationInfoListObjectOperationDelimiterKey = @"SCSOperatio
 
 - (NSString *)kind
 {
-	return @"Bucket content";
+	return SCSOperationKindObjectList;
 }
 
 - (NSString *)requestHTTPVerb

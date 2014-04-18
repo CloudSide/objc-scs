@@ -40,7 +40,8 @@
 {
     // Insert code here to initialize your application
     
-    _queue = [[SCSOperationQueue alloc] initWithDelegate:self];
+    SCSOperationQueue *queue = [[SCSOperationQueue alloc] initWithDelegate:self];
+    [SCSOperationQueue setSharedOperationQueue:queue];
     
     if ([kSCSAccessKey isEqualToString:@"YOUR ACCESS KEY"] || [kSCSSecretKey isEqualToString:@"YOUR SECRET KEY"]) {
         
@@ -74,10 +75,6 @@
     
     self.resultView = [[[OperationResultView alloc] initWithFrame:NSMakeRect(200, 15, 570, 350)] autorelease];
     [self.window.contentView addSubview:_resultView];
-}
-
-- (SCSOperationQueue *)queue {
-    return _queue;
 }
 
 @end

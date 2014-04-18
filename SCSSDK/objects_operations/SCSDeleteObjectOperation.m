@@ -43,7 +43,7 @@ static NSString *SCSOperationInfoDeleteObjectOperationObjectKey = @"SCSOperation
 
 - (NSString *)kind
 {
-	return @"Object deletion";
+	return SCSOperationKindObjectDelete;
 }
 
 - (NSString *)requestHTTPVerb

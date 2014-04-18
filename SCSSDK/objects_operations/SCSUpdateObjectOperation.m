@@ -43,7 +43,7 @@ static NSString *SCSOperationInfoUpdateObjectOperationObjectKey = @"SCSOperation
 
 - (NSString *)kind
 {
-	return @"Object update";
+	return SCSOperationKindObjectUpdate;
 }
 
 - (NSString *)requestHTTPVerb

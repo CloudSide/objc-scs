@@ -42,7 +42,7 @@ static NSString *SCSOperationInfoAddBucketOperationBucketKey = @"SCSOperationInf
 
 - (NSString *)kind
 {
-	return @"Bucket addition";
+	return SCSOperationKindBucketAdd;
 }
 
 - (NSString *)requestHTTPVerb

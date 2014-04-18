@@ -44,7 +44,7 @@ static NSString *SCSOperationInfoAddObjectOperationObjectKey = @"SCSOperationInf
 
 - (NSString *)kind
 {
-	return @"Object upload";
+	return SCSOperationKindObjectAdd;
 }
 
 - (NSString *)requestHTTPVerb

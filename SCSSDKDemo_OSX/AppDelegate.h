@@ -15,15 +15,11 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     
-    SCSOperationQueue *_queue;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 
 @property (nonatomic, retain) OperationDetailView *detailView;
 @property (nonatomic, retain) OperationResultView *resultView;
-
-
-- (SCSOperationQueue *)queue;
 
 @end

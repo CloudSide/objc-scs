@@ -20,6 +20,8 @@ NSString *SCSOperationObjectKey =           @"SCSOperationObjectKey";
 NSString *SCSOperationObjectForRetryKey =   @"SCSOperationObjectForRetryKey";
 
 
+static SCSOperationQueue *kSharedOperationQueue = nil;
+
 @interface SCSOperationQueue (PrivateAPI)
 - (void)removeFromCurrentOperations:(SCSOperation *)op;
 - (void)startQualifiedOperations:(NSTimer *)timer;
@@ -28,6 +30,19 @@ NSString *SCSOperationObjectForRetryKey =   @"SCSOperationObjectForRetryKey";
 @end
 
 @implementation SCSOperationQueue
+
++ (SCSOperationQueue *)sharedOperationQueue {
+    
+    return kSharedOperationQueue;
+}
+
++ (void)setSharedOperationQueue:(SCSOperationQueue *)operationQueue; {
+    
+    if (operationQueue == kSharedOperationQueue) return;
+    
+    [kSharedOperationQueue release];
+    kSharedOperationQueue = [operationQueue retain];
+}
 
 - (id)initWithDelegate:(id)delegate
 {

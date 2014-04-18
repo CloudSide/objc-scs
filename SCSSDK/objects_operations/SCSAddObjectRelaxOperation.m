@@ -63,7 +63,7 @@ static NSString *SCSOperationInfoAddObjectRelaxOperationFileSizeKey = @"SCSOpera
 
 - (NSString *)kind
 {
-	return @"Object upload relax";
+	return SCSOperationKindObjectAddRelax;
 }
 
 - (NSString *)requestHTTPVerb

@@ -22,6 +22,16 @@
 	NSTimer *_timer;
 }
 
+/*!Get the global static SCSOperationQueue.
+ \returns The global static SCSOperationQueue.
+ */
++ (SCSOperationQueue *)sharedOperationQueue;
+
+/*!Set a created SCSOperationQueue object for singleton parttern.
+ \param operationQueue A created SCSOperationQueue for global static using.
+ */
++ (void)setSharedOperationQueue:(SCSOperationQueue *)operationQueue;
+
 /*!Initialize a new SCSOperationQueue immediately after memory for it has been allocated.
  \param delegate Delegate to observe the change of the operation status..
  \returns The initialized SCSOperationQueue.

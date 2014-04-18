@@ -15,6 +15,20 @@
 #define SCS_ERROR_DOMAIN                @"sinastorage"
 #define SCS_ERROR_CODE_KEY              @"SCSErrorCode"
 
+extern NSString *SCSOperationKindBucketList;
+extern NSString *SCSOperationKindBucketAdd;
+extern NSString *SCSOperationKindBucketDelete;
+extern NSString *SCSOperationKindObjectAdd;
+extern NSString *SCSOperationKindObjectAddRelax;
+extern NSString *SCSOperationKindObjectCopy;
+extern NSString *SCSOperationKindObjectDelete;
+extern NSString *SCSOperationKindObjectDownload;
+extern NSString *SCSOperationKindObjectGetInfo;
+extern NSString *SCSOperationKindObjectList;
+extern NSString *SCSOperationKindObjectUpdate;
+extern NSString *SCSOperationKindGetACL;
+extern NSString *SCSOperationKindSetACL;
+
 typedef enum _SCSOperationState {
     SCSOperationPending = 0,
     SCSOperationPendingRetry = 1,

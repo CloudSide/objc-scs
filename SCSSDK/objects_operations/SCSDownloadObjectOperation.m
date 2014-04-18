@@ -62,7 +62,7 @@ static NSString *SCSOperationInfoDownloadObjectOperationFilePathKey = @"SCSOpera
 
 - (NSString *)kind
 {
-	return @"Object download";
+	return SCSOperationKindObjectDownload;
 }
 
 - (NSString *)requestHTTPVerb

@@ -55,7 +55,7 @@ static NSString *SCSOperationInfoCopyObjectOperationDestinationObjectKey = @"SCS
 
 - (NSString *)kind
 {
-	return @"Object copy";
+	return SCSOperationKindObjectCopy;
 }
 
 - (NSString *)requestHTTPVerb

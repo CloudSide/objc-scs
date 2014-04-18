@@ -56,7 +56,7 @@ static NSString *SCSOperationInfoSetACLOperationACLKey = @"SCSOperationInfoSetAC
 
 - (NSString *)kind
 {
-	return @"Set acl";
+	return SCSOperationKindSetACL;
 }
 
 - (NSString *)requestHTTPVerb

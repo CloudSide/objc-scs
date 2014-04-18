@@ -69,24 +69,24 @@
     
     if ([operation state] == SCSOperationDone) {
 
-        if ([[operation kind] isEqualToString:@"Bucket list"]) {
+        if ([[operation kind] isEqualToString:SCSOperationKindBucketList]) {
             
             for (SCSBucket *b in [(SCSListBucketOperation *)operation bucketList]) {
                 
                 _textView.text = [NSString stringWithFormat:@"%@\n%@", _textView.text, b];
             }
-        }else if ([[operation kind] isEqualToString:@"Bucket content"]) {
+        }else if ([[operation kind] isEqualToString:SCSOperationKindObjectList]) {
             
             for (SCSObject *o in [(SCSListObjectOperation *)operation objects]) {
                 
                 _textView.text = [NSString stringWithFormat:@"%@\n%@", _textView.text, o];
             }
             
-        }else if ([[operation kind] isEqualToString:@"Object get info"]) {
+        }else if ([[operation kind] isEqualToString:SCSOperationKindObjectGetInfo]) {
             
             _textView.text = [NSString stringWithFormat:@"%@", [(SCSGetInfoObjectOperation *)operation objectInfo]];
             
-        }else if ([[operation kind] isEqualToString:@"Get acl"]) {
+        }else if ([[operation kind] isEqualToString:SCSOperationKindGetACL]) {
             
             _textView.text = [NSString stringWithFormat:@"%@", [(SCSGetACLOperation *)operation aclInfo]];
             

@@ -12,6 +12,20 @@
 #import "SCSTransferRateCalculator.h"
 #import "SCSPersistentCFReadStreamPool.h"
 
+NSString *SCSOperationKindBucketList =          @"Bucket list";
+NSString *SCSOperationKindBucketAdd =           @"Bucket addition";
+NSString *SCSOperationKindBucketDelete =        @"Bucket deletion";
+NSString *SCSOperationKindObjectAdd =           @"Object upload";
+NSString *SCSOperationKindObjectAddRelax =      @"Object upload relax";
+NSString *SCSOperationKindObjectCopy =          @"Object copy";
+NSString *SCSOperationKindObjectDelete =        @"Object deletion";
+NSString *SCSOperationKindObjectDownload =      @"Object download";
+NSString *SCSOperationKindObjectGetInfo =       @"Object get info";
+NSString *SCSOperationKindObjectList =          @"Bucket content";
+NSString *SCSOperationKindObjectUpdate =        @"Object update";
+NSString *SCSOperationKindGetACL =              @"Get acl";
+NSString *SCSOperationKindSetACL =              @"Set acl";
+
 @interface SCSOperation (SCSOperationPrivateAPI)
 
 - (void)handleNetworkEvent:(CFStreamEventType)eventType;

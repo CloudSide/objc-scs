@@ -42,7 +42,7 @@ static NSString *SCSOperationInfoDeleteBucketOperationBucketKey = @"SCSOperation
 
 - (NSString*)kind
 {
-	return @"Bucket deletion";
+	return SCSOperationKindBucketDelete;
 }
 
 - (NSString *)requestHTTPVerb
