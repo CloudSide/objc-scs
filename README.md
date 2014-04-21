@@ -228,6 +228,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
 ##ACL操作
 > * ACL详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=guide&section=acl
+
 ###获取Bucket的ACL信息
 ```objective-c
 - (void)scsGetACLBucketOperation {
@@ -254,6 +255,24 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
+}
+```
+
+###Example
+
+```objective-c
+- (void)scsSetACLBucketOperation {
+
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+    
+    SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:SCSACLCanonicalUserGroupGranteeID] autorelease];
+    SCSGrant *grant = [[[SCSGrant alloc] initWithGrantArray:@[SCSACLGrantRead, SCSACLGrantReadACP, SCSACLGrantWrite, SCSACLGrantWriteACP]] autorelease];
+    SCSACL *acl = [[[SCSACL alloc] initWithGranteesAndGrants:[NSDictionary dictionaryWithObject:grant forKey:[grantee uid]]] autorelease];
+    
+    SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:nil acl:acl] autorelease];
+    
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 ```
 
