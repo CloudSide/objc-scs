@@ -5,40 +5,21 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 
 新浪云存储Objective-C SDK为第三方应用提供了简单易用的API调用服务，使第三方客户端无需了解复杂的验证机制即可进行授权、上传、下载等文件操作。
 
-> * 文档的详细内容请查阅：
+> * 文档的详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=sdk
+> * SCS API 的详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=api
 
 #SDK环境要求
 ##系统版本：
 > * iOS: 6.0及以上。
 > * OSX: 10.8及以上。
 
-##Frameworks：
-> * iOS:Foundation.framework 
-        CoreData.framework 
-        AppKit.framework
-> * OSX:
-        Cocoa.framework
-        CoreData.framework
-        AppKit.framework
-> * iOS Demo:
-        Foundation.framework 
-        CoreData.framework        
-        CoreFoundation.framework
-        Security.framework
-        CoreGraphics.framework
-        UIKit.framework
-> * OSX Demo:
-        Cocoa.framework
-        CoreData.framework
-        CoreFoundation.framework
-        Security.framework
-        AppKit.framework
-
 ##相关配置：
-> * ARC: SDK不支持ARC模式，设置Objective-C Automatic Reference Counting 为 NO。
-> * Link: 设置Other Linker Flags 为 -ObjC -all_load。
-> * Demo_IOS: 在Build Phases下Link Binary Libraries中添加libSCSSDK_IOS.a。
-> * Demo_OSX: 在Build Phases下Link Binary Libraries中添加libSCSSDK_OSX.a。
+> * 1、将SCSSDK文件夹拷贝到你的工程目录下；
+> * 2、打开xcode，将SCSSDK.xcodeproj拖动到你的工程中；
+> * 3、选择你的工程，在右侧选择Build Settings，并设置Other Linker Flags 为 -ObjC -all_load；
+> * 4、选择Build Phases，在Link Binary With Libraries中添加如下：
+    _iOS_：libSCSSDK_IOS.a；Foundation.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；CoreGraphics.framework ；UIKit.framework；
+    _OSX_：libSCSSDK_OSX.a；Cocoa.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；AppKit.framework。
 
 #快速上手
 ##设置accessKey、secretKey
@@ -54,11 +35,8 @@ SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey
 self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
 //若全局只使用唯一的queue，方法如下：
-//SCSOperationQueue *queue = [[SCSOperationQueue alloc] initWithDelegate:self];
-//[SCSOperationQueue setSharedOperationQueue:queue];
-
-//获取唯一的queue
-//[SCSOperationQueue sharedOperationQueue];
+//SCSOperationQueue *queue = [SCSOperationQueue sharedOperationQueueWithDelegate:self];
+//其中delegate用来设置队列的最大长度，可设为nil，详情参考代码文档
 ```
 
 ##Bucket操作
@@ -107,27 +85,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindBucketAdd]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindBucketAdd]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
 ```
 
 ###删除Bucket
@@ -139,27 +96,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindBucketDelete]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindBucketDelete]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -173,27 +109,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectList]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectList]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -214,27 +129,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectAdd]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectAdd]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
 ```
 
 ###秒传Object
@@ -253,27 +147,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectAddRelax]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectAddRelax]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -294,27 +167,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectCopy]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectCopy]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
 ```
 
 ###删除Object
@@ -326,27 +178,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectDelete]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectDelete]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -362,34 +193,13 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectDownload]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectDownload]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
 ```
 
 ###更新Object
 ```objective-c
 - (void)scsUpdateObjectOperation {
 
-    NSDictionary *udmd = [NSDictionary dictionaryWithObjectsAndKeys:@"要修改的信息", @"要修改信息的key", nil];//可用作添加
+    NSDictionary *udmd = [NSDictionary dictionaryWithObjectsAndKeys:@"要修改的信息", @"要修改信息的key", nil];//可用作添加新属性
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"文件所在的Bucket名称"] autorelease];
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）" userDefinedMetadata:udmd] autorelease];
 
@@ -399,27 +209,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectUpdate]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectUpdate]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -435,31 +224,10 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectUpdate]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindObjectUpdate]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
 ```
 
 ##ACL操作
-> * ACL详细内容请查阅：
+> * ACL详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=guide&section=acl
 ###获取Bucket的ACL信息
 ```objective-c
 - (void)scsGetACLBucketOperation {
@@ -469,27 +237,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindGetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindGetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -508,43 +255,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindSetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindSetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
-```
-
-> * Grantee可以是一个云存储中的注册用户，用AccessKeyId标示, 例如：SINA0000001001HBK388
-Grantee还可以是一个新浪云存储预定义的用户组，有如下两种：
-GRPS0000000CANONICAL、GRPS000000ANONYMOUSE
-> * Grant：READ、WRITE、READ_ACP、WRITE_ACP、FULL_CONTROL	
-> * ACL：如
-{
-	'SINA0000000123456789' :  [ "read", "read_acp" , "write", "write_acp" ],
-	'GRPS000000ANONYMOUSE' :  [ "read" ],
-	'GRPS0000000CANONICAL' :  [ "read", "write" ]
-}
-> * 代码示例：
-```objective-c
-SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:SCSACLCanonicalUserGroupGranteeID] autorelease];
-    SCSGrant *grant = [[[SCSGrant alloc] initWithGrantArray:@[SCSACLGrantRead, SCSACLGrantReadACP, SCSACLGrantWrite, SCSACLGrantWriteACP]] autorelease];
 ```
 
 ###获取Object的ACL信息
@@ -557,27 +267,6 @@ SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:SCSACLCanonicalUserGroupG
 
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
-}
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindGetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindGetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
 }
 ```
 
@@ -601,26 +290,4 @@ SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:SCSACLCanonicalUserGroupG
     [queue addQueueListener:self];
     [queue addToCurrentOperations:op];
 }
-
-//操作结果回调
-- (void)operationQueueOperationStateDidChange:(NSNotification *)notification
-{
-    SCSOperation *operation = [[notification userInfo] objectForKey:SCSOperationObjectKey];
-
-    if ([operation state] == SCSOperationDone) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindSetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-
-    }else if ([operation state] == SCSOperationError) {
-
-        if ([[operation kind] isEqualToString:SCSOperationKindSetACL]) {
-            //Your action
-        }
-        [queue removeQueueListener:self];
-    }
-}
 ```
-> * Grantee、Grant、ACL同设置Bucket的ACL信息

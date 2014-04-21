@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SCSConnectionInfo;
-
 @interface RootViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

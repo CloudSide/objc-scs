@@ -22,18 +22,15 @@
 	NSTimer *_timer;
 }
 
-/*!Get the global static SCSOperationQueue.
+/*!Get the global static SCSOperationQueue. If the queue is nil, then create one.
+ \param delegate Delegate to set the queue's length with function - (int)maximumNumberOfSimultaneousOperationsForOperationQueue:(SCSOperationQueue *)operationQueue.
  \returns The global static SCSOperationQueue.
  */
-+ (SCSOperationQueue *)sharedOperationQueue;
++ (SCSOperationQueue *)sharedOperationQueueWithDelegate:(id)delegate;
 
-/*!Set a created SCSOperationQueue object for singleton parttern.
- \param operationQueue A created SCSOperationQueue for global static using.
- */
-+ (void)setSharedOperationQueue:(SCSOperationQueue *)operationQueue;
 
 /*!Initialize a new SCSOperationQueue immediately after memory for it has been allocated.
- \param delegate Delegate to observe the change of the operation status..
+ \param delegate Delegate to set the queue's length with function - (int)maximumNumberOfSimultaneousOperationsForOperationQueue:(SCSOperationQueue *)operationQueue.
  \returns The initialized SCSOperationQueue.
  */
 - (id)initWithDelegate:(id)delegate;
@@ -62,6 +59,10 @@
 @end
 
 @interface NSObject (SCSOperationQueueDelegate)
+
+/*!Set the max length of the operation queue.
+ \returns Max length of the operation queue.
+ */
 - (int)maximumNumberOfSimultaneousOperationsForOperationQueue:(SCSOperationQueue *)operationQueue;
 @end
 

@@ -10,12 +10,9 @@
 
 #import "RootViewController.h"
 
-@class SCSConnectionInfo;
-@class SCSOperationQueue;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     
-    SCSOperationQueue *_queue;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -23,10 +20,6 @@
 @property (nonatomic, retain) UINavigationController *navigationController;
 
 @property (nonatomic, retain) RootViewController *rootViewController;
-
-
-- (SCSOperationQueue *)queue;
-
 
 
 @end

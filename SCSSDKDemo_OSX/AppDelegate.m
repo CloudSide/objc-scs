@@ -40,9 +40,6 @@
 {
     // Insert code here to initialize your application
     
-    SCSOperationQueue *queue = [[SCSOperationQueue alloc] initWithDelegate:self];
-    [SCSOperationQueue setSharedOperationQueue:queue];
-    
     if ([kSCSAccessKey isEqualToString:@"YOUR ACCESS KEY"] || [kSCSSecretKey isEqualToString:@"YOUR SECRET KEY"]) {
         
         NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"accessKey" ofType:@"plist"]];

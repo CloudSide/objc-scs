@@ -9,12 +9,6 @@
 #import "AppDelegate.h"
 #import "OperationResultViewController.h"
 
-@interface OperationResultViewController () {
-    AppDelegate *_appDelegate;
-}
-
-@end
-
 @implementation OperationResultViewController
 
 @synthesize operation = _operation;
@@ -41,9 +35,7 @@
 {
     [super viewDidLoad];
 	
-    _appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.title  =@"Operation Result";
-    
     
     self.textView = [[[UITextView alloc] init] autorelease];
     _textView.frame = self.view.bounds;
@@ -51,8 +43,8 @@
     [self.view addSubview:_textView];
     self.textView.editable = NO;
     
-    [[_appDelegate queue] addQueueListener:self];
-    [[_appDelegate queue] addToCurrentOperations:_operation];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:_operation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,7 +99,7 @@
             _textView.text = [NSString stringWithFormat:@"%@ success\n\nRequestURL: %@\n\nRequestMethod: %@\n\nHttpResponseStatusCode: %@\n\nRequestHeader: %@\n\nResponseHeader: %@\n\nResponseData: %@", [operation kind], [operation url], [operation requestHTTPVerb], [operation responseStatusCode], [operation requestHeaders], [operation responseHeaders], json];
         }
 
-        [[_appDelegate queue] removeQueueListener:self];
+        [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] removeQueueListener:self];
         
     } else if ([operation state] == SCSOperationError) {
         
@@ -116,7 +108,7 @@
         
         _textView.text = [NSString stringWithFormat:@"%@ error\n\nRequestURL: %@\n\nRequestMethod: %@\n\nHttpResponseStatusCode: %@\n\nRequestHeader: %@\n\nResponseHeader: %@", [operation kind], [operation url], [operation requestHTTPVerb], [operation responseStatusCode], [operation requestHeaders], [operation responseHeaders]];
         
-        [[_appDelegate queue] removeQueueListener:self];
+        [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] removeQueueListener:self];
     }
 }
 

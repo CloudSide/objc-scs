@@ -234,8 +234,8 @@
 - (void)scsListBucketOperation {
     
     SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsAddBucketOperation {
@@ -243,8 +243,8 @@
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-002" creationDate:nil consumedBytes:0 fastAcl:SCSFastACLPublicReadWrite] autorelease];
     SCSAddBucketOperation *op = [[[SCSAddBucketOperation alloc] initWithBucket:bucket] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsDeleteBucketOperation {
@@ -252,8 +252,8 @@
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
     SCSDeleteBucketOperation *op = [[[SCSDeleteBucketOperation alloc] initWithBucket:bucket] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsListObjectOperation {
@@ -261,8 +261,8 @@
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
     SCSListObjectOperation *op = [[[SCSListObjectOperation alloc] initWithBucket:bucket] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsCopyObjectOperation {
@@ -273,8 +273,8 @@
     
     SCSCopyObjectOperation *op = [[[SCSCopyObjectOperation alloc] initWithObjectfrom:objSrc to:objDest] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsAddObjectOperation {
@@ -297,8 +297,8 @@
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
     SCSAddObjectOperation *op = [[[SCSAddObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsAddObjectRelaxOperation {
@@ -320,8 +320,8 @@
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
     SCSAddObjectRelaxOperation *op = [[[SCSAddObjectRelaxOperation alloc] initWithObject:object fileSha1:[sha1 retain] fileSize:fileSize] autorelease];
 
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsDeleteObjectOperation {
@@ -331,8 +331,8 @@
     
     SCSDeleteObjectOperation *op = [[[SCSDeleteObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsDownloadObjectOperation {
@@ -346,8 +346,8 @@
     
     SCSDownloadObjectOperation *op = [[[SCSDownloadObjectOperation alloc] initWithObject:object saveTo:savedFilePath] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsUpdateObjectOperation {
@@ -358,8 +358,8 @@
     
     SCSUpdateObjectOperation *op = [[[SCSUpdateObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsGetInfoObjectOperation {
@@ -369,8 +369,8 @@
     
     SCSGetInfoObjectOperation *op = [[[SCSGetInfoObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsGetACLBucketOperation {
@@ -379,8 +379,8 @@
     
     SCSGetACLOperation *op = [[[SCSGetACLOperation alloc] initWithBucket:bucket object:nil] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsSetACLBucketOperation {
@@ -393,8 +393,8 @@
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:nil acl:acl] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsGetACLObjectOperation {
@@ -404,8 +404,8 @@
     
     SCSGetACLOperation *op = [[[SCSGetACLOperation alloc] initWithBucket:bucket object:object] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 - (void)scsSetACLObjectOperation {
@@ -420,8 +420,8 @@
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:object acl:acl] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
+    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
 }
 
 #pragma mark - SCSOperationQueueNotifications
@@ -471,7 +471,7 @@
 
         }
         
-        [[SCSOperationQueue sharedOperationQueue] removeQueueListener:self];
+        [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] removeQueueListener:self];
         
     } else if ([operation state] == SCSOperationError) {
         
@@ -480,7 +480,7 @@
         
         _appDelegate.resultView.theTextView.string = [NSString stringWithFormat:@"%@ error\n\nRequestURL: %@\n\nRequestMethod: %@\n\nHttpResponseStatusCode: %@\n\nRequestHeader: %@\n\nResponseHeader: %@", [operation kind], [operation url], [operation requestHTTPVerb], [operation responseStatusCode], [operation requestHeaders], [operation responseHeaders]];
         
-        [[SCSOperationQueue sharedOperationQueue] removeQueueListener:self];
+        [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] removeQueueListener:self];
     }
 }
 
