@@ -308,9 +308,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）"] autorelease];
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:object acl:acl] autorelease];
-    
-    [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
 
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
