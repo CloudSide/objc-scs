@@ -16,12 +16,19 @@
     AppDelegate *_appDelegate;
 }
 
+- (void)dealloc {
+    
+    [[SCSOperationQueue sharedQueue] removeQueueListener:self];
+    
+    [super dealloc];
+}
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        _tableView = [[NSTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        _tableView = [[[NSTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)] autorelease];
         
 		NSTableColumn *_channTableColumn = [[[NSTableColumn alloc] initWithIdentifier:@"channels"] autorelease];
 		[_tableView addTableColumn:_channTableColumn];
@@ -36,6 +43,8 @@
         [self addSubview:_tableView];
         
         _appDelegate = (AppDelegate *)[[NSApplication sharedApplication]delegate];
+        
+        [[SCSOperationQueue sharedQueue] addQueueListener:self];
     }
     return self;
 }
@@ -234,7 +243,6 @@
 - (void)scsListBucketOperation {
     
     SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -243,7 +251,6 @@
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-002" creationDate:nil consumedBytes:0 fastAcl:SCSFastACLPublicReadWrite] autorelease];
     SCSAddBucketOperation *op = [[[SCSAddBucketOperation alloc] initWithBucket:bucket] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -252,7 +259,6 @@
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
     SCSDeleteBucketOperation *op = [[[SCSDeleteBucketOperation alloc] initWithBucket:bucket] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -261,7 +267,6 @@
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
     SCSListObjectOperation *op = [[[SCSListObjectOperation alloc] initWithBucket:bucket] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -273,7 +278,6 @@
     
     SCSCopyObjectOperation *op = [[[SCSCopyObjectOperation alloc] initWithObjectfrom:objSrc to:objDest] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -297,7 +301,6 @@
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
     SCSAddObjectOperation *op = [[[SCSAddObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -320,7 +323,6 @@
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
     SCSAddObjectRelaxOperation *op = [[[SCSAddObjectRelaxOperation alloc] initWithObject:object fileSha1:[sha1 retain] fileSize:fileSize] autorelease];
 
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -331,7 +333,6 @@
     
     SCSDeleteObjectOperation *op = [[[SCSDeleteObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -346,7 +347,6 @@
     
     SCSDownloadObjectOperation *op = [[[SCSDownloadObjectOperation alloc] initWithObject:object saveTo:savedFilePath] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -358,7 +358,6 @@
     
     SCSUpdateObjectOperation *op = [[[SCSUpdateObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -369,7 +368,6 @@
     
     SCSGetInfoObjectOperation *op = [[[SCSGetInfoObjectOperation alloc] initWithObject:object] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -379,7 +377,6 @@
     
     SCSGetACLOperation *op = [[[SCSGetACLOperation alloc] initWithBucket:bucket object:nil] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -393,7 +390,6 @@
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:nil acl:acl] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -404,7 +400,6 @@
     
     SCSGetACLOperation *op = [[[SCSGetACLOperation alloc] initWithBucket:bucket object:object] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -420,7 +415,6 @@
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:object acl:acl] autorelease];
     
-    [[SCSOperationQueue sharedQueue] addQueueListener:self];
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 
@@ -471,16 +465,12 @@
 
         }
         
-        [[SCSOperationQueue sharedQueue] removeQueueListener:self];
-        
     } else if ([operation state] == SCSOperationError) {
         
         NSString *JSONString = [[[NSString alloc] initWithBytes:[[operation requestBodyContentData] bytes] length:[[operation requestBodyContentData] length] encoding:NSUTF8StringEncoding] autorelease];
         NSLog(@"%@", JSONString);
         
         _appDelegate.resultView.theTextView.string = [NSString stringWithFormat:@"%@ error\n\nRequestURL: %@\n\nRequestMethod: %@\n\nHttpResponseStatusCode: %@\n\nRequestHeader: %@\n\nResponseHeader: %@", [operation kind], [operation url], [operation requestHTTPVerb], [operation responseStatusCode], [operation requestHeaders], [operation responseHeaders]];
-        
-        [[SCSOperationQueue sharedQueue] removeQueueListener:self];
     }
 }
 

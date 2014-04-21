@@ -19,6 +19,8 @@
     [_operation release];
     [_textView release];
     
+    [[SCSOperationQueue sharedQueue] removeQueueListener:self];
+    
     [super dealloc];
 }
 

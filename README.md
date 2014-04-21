@@ -41,12 +41,26 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 #####Example
 
 ```objective-c
-SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
-[[SCSOperationQueue sharedQueue] addQueueListener:self];
-[[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 
-//可设置delegate用来设置队列的最大长度，详情参考代码文档
-//[[SCSOperationQueue sharedQueue] setDelegate:self];
+- (void)dealloc {
+    ...
+    [[SCSOperationQueue sharedQueue] removeQueueListener:self];
+    ...
+}
+
+- (void)viewDidLoad {
+    ...
+    [[SCSOperationQueue sharedQueue] addQueueListener:self];
+
+    //可设置delegate用来设置队列的最大长度，详情参考代码文档
+    //[[SCSOperationQueue sharedQueue] setDelegate:self];
+    ...
+}
+
+- (void)scsListBucketOperation {
+    SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
+}
 
 //操作结果回调
 - (void)operationQueueOperationStateDidChange:(NSNotification *)notification
@@ -58,14 +72,11 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
         if ([[operation kind] isEqualToString:SCSOperationKindBucketList]) {
             //Your action
         }
-        [queue removeQueueListener:self];
-
     }else if ([operation state] == SCSOperationError) {
 
         if ([[operation kind] isEqualToString:SCSOperationKindBucketList]) {
             //Your action
         }
-        [queue removeQueueListener:self];
     }
 }
 
@@ -76,8 +87,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
 - (void)scsListBucketOperation {
 
     SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -91,9 +101,8 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     //SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"要创建的Bucket名称" creationDate:nil consumedBytes:0 fastAcl:SCSFastACLPublicReadWrite] autorelease];
 
     SCSAddBucketOperation *op = [[[SCSAddBucketOperation alloc] initWithBucket:bucket] autorelease];
-    
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -104,8 +113,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"待删除的Bucket名称"] autorelease];
     SCSDeleteBucketOperation *op = [[[SCSDeleteBucketOperation alloc] initWithBucket:bucket] autorelease];
     
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -117,8 +125,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"指定的Bucket名称"] autorelease];
     SCSListObjectOperation *op = [[[SCSListObjectOperation alloc] initWithBucket:bucket] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -136,8 +143,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
 
     SCSAddObjectOperation *op = [[[SCSAddObjectOperation alloc] initWithObject:object] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -155,8 +161,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
 
     //秒传时可设置文件的acl属性，参考上传Object
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -174,8 +179,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
 
     SCSCopyObjectOperation *op = [[[SCSCopyObjectOperation alloc] initWithObjectfrom:objSrc to:objDest] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -186,8 +190,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"文件所在的Bucket名称"] autorelease];
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）"] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -200,8 +203,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     
     SCSDownloadObjectOperation *op = [[[SCSDownloadObjectOperation alloc] initWithObject:object saveTo:@"文件保存全路径"] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -217,8 +219,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
 
     SCSUpdateObjectOperation *op = [[[SCSUpdateObjectOperation alloc] initWithObject:object] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -231,8 +232,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     
     SCSGetInfoObjectOperation *op = [[[SCSGetInfoObjectOperation alloc] initWithObject:object] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -246,8 +246,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"目标Bucket名称"] autorelease];    
     SCSGetACLOperation *op = [[[SCSGetACLOperation alloc] initWithBucket:bucket object:nil] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -263,8 +262,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:nil acl:acl] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -281,8 +279,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     
     SCSSetACLOperation *op = [[[SCSSetACLOperation alloc] initWithBucket:bucket object:nil acl:acl] autorelease];
     
-    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -294,8 +291,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）"] autorelease];
     SCSGetACLOperation *op = [[[SCSGetACLOperation alloc] initWithBucket:bucket object:object] autorelease];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
 
@@ -316,7 +312,6 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
     [[SCSOperationQueue sharedOperationQueue] addQueueListener:self];
     [[SCSOperationQueue sharedOperationQueue] addToCurrentOperations:op];
 
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
 ```
