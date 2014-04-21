@@ -5,8 +5,8 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 
 新浪云存储Objective-C SDK为第三方应用提供了简单易用的API调用服务，使第三方客户端无需了解复杂的验证机制即可进行授权、上传、下载等文件操作。
 
-> * 文档的详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=sdk
-> * SCS API 的详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=api
+> * 文档的详细内容请查阅：http://open.sinastorage.com/?c=doc&a=sdk
+> * SCS API 的详细内容请查阅：http://open.sinastorage.com/?c=doc&a=api
 
 ###SDK环境要求
 ####系统版本：
@@ -237,7 +237,7 @@ SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease]
 ```
 
 ####ACL操作
-> * ACL详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=guide&section=acl
+> * ACL详细内容请查阅：http://open.sinastorage.com/?c=doc&a=guide&section=acl
 
 #####获取Bucket的ACL信息
 ```objective-c
