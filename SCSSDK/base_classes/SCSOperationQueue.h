@@ -23,10 +23,9 @@
 }
 
 /*!Get the global static SCSOperationQueue. If the queue is nil, then create one.
- \param delegate Delegate to set the queue's length with function - (int)maximumNumberOfSimultaneousOperationsForOperationQueue:(SCSOperationQueue *)operationQueue.
  \returns The global static SCSOperationQueue.
  */
-+ (SCSOperationQueue *)sharedOperationQueueWithDelegate:(id)delegate;
++ (SCSOperationQueue *)sharedQueue;
 
 
 /*!Initialize a new SCSOperationQueue immediately after memory for it has been allocated.
@@ -55,6 +54,11 @@
  \returns Operations array in the queue.
  */
 - (NSArray *)currentOperations;
+
+/*!Set the delegate for the operation queue.
+ \param delegate Delegate to set the queue's length with function - (int)maximumNumberOfSimultaneousOperationsForOperationQueue:(SCSOperationQueue *)operationQueue.
+ */
+- (void)setDelegate:(id)delegate;
 
 @end
 

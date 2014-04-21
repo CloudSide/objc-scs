@@ -43,8 +43,8 @@
     [self.view addSubview:_textView];
     self.textView.editable = NO;
     
-    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addQueueListener:self];
-    [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] addToCurrentOperations:_operation];
+    [[SCSOperationQueue sharedQueue] addQueueListener:self];
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:_operation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,7 +99,7 @@
             _textView.text = [NSString stringWithFormat:@"%@ success\n\nRequestURL: %@\n\nRequestMethod: %@\n\nHttpResponseStatusCode: %@\n\nRequestHeader: %@\n\nResponseHeader: %@\n\nResponseData: %@", [operation kind], [operation url], [operation requestHTTPVerb], [operation responseStatusCode], [operation requestHeaders], [operation responseHeaders], json];
         }
 
-        [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] removeQueueListener:self];
+        [[SCSOperationQueue sharedQueue] removeQueueListener:self];
         
     } else if ([operation state] == SCSOperationError) {
         
@@ -108,7 +108,7 @@
         
         _textView.text = [NSString stringWithFormat:@"%@ error\n\nRequestURL: %@\n\nRequestMethod: %@\n\nHttpResponseStatusCode: %@\n\nRequestHeader: %@\n\nResponseHeader: %@", [operation kind], [operation url], [operation requestHTTPVerb], [operation responseStatusCode], [operation requestHeaders], [operation responseHeaders]];
         
-        [[SCSOperationQueue sharedOperationQueueWithDelegate:nil] removeQueueListener:self];
+        [[SCSOperationQueue sharedQueue] removeQueueListener:self];
     }
 }
 

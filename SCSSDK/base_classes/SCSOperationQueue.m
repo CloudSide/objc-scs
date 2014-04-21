@@ -31,12 +31,17 @@ static SCSOperationQueue *kSharedOperationQueue = nil;
 
 @implementation SCSOperationQueue
 
-+ (SCSOperationQueue *)sharedOperationQueueWithDelegate:(id)delegate {
++ (SCSOperationQueue *)sharedQueue {
     
     if (kSharedOperationQueue == nil) {
-        kSharedOperationQueue = [[self alloc] initWithDelegate:delegate];
+        kSharedOperationQueue = [[self alloc] initWithDelegate:nil];
     }
     return kSharedOperationQueue;
+}
+
+- (void)setDelegate:(id)delegate {
+    
+    _delegate = delegate;
 }
 
 - (id)initWithDelegate:(id)delegate

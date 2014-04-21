@@ -8,12 +8,12 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 > * 文档的详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=sdk
 > * SCS API 的详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=api
 
-#SDK环境要求
-##系统版本：
+###SDK环境要求
+####系统版本：
 > * iOS: 6.0及以上。
 > * OSX: 10.8及以上。
 
-##相关配置：
+####相关配置：
 > * 1、将SCSSDK文件夹拷贝到你的工程目录下；
 > * 2、打开xcode，将SCSSDK.xcodeproj拖动到你的工程中；
 > * 3、选择你的工程，在右侧选择Build Settings，并设置Other Linker Flags 为 -ObjC -all_load；
@@ -21,33 +21,32 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 > * _iOS_：libSCSSDK_IOS.a；Foundation.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；CoreGraphics.framework ；UIKit.framework；
 > * _OSX_：libSCSSDK_OSX.a；Cocoa.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；AppKit.framework。
 
-#快速上手
-##设置accessKey、secretKey
+###快速上手
+####设置accessKey、secretKey
 
 ```objective-c
 SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:@"YOU ACCESS KEY" secretKey:@"YOU SECRET KEY" userInfo:nil secureConnection:NO];
 [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
 ```
 
-##创建操作队列
+####创建操作队列
 
 ```objective-c
 self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
 //若全局只使用唯一的queue，方法如下：
-//SCSOperationQueue *queue = [SCSOperationQueue sharedOperationQueueWithDelegate:self];
-//其中delegate用来设置队列的最大长度，可设为nil，详情参考代码文档
+//[SCSOperationQueue sharedQueue];
 ```
 
-##Bucket操作
-###列取全部Bucket
-```objective-c
-- (void)scsListBucketOperation {
+#####Example
 
-    SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
-    [queue addQueueListener:self];
-    [queue addToCurrentOperations:op];
-}
+```objective-c
+SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
+[[SCSOperationQueue sharedQueue] addQueueListener:self];
+[[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
+
+//可设置delegate用来设置队列的最大长度，详情参考代码文档
+//[[SCSOperationQueue sharedQueue] setDelegate:self];
 
 //操作结果回调
 - (void)operationQueueOperationStateDidChange:(NSNotification *)notification
@@ -69,9 +68,20 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
         [queue removeQueueListener:self];
     }
 }
+
+```
+####Bucket操作
+#####列取全部Bucket
+```objective-c
+- (void)scsListBucketOperation {
+
+    SCSListBucketOperation *op = [[[SCSListBucketOperation alloc] init] autorelease];
+    [queue addQueueListener:self];
+    [queue addToCurrentOperations:op];
+}
 ```
 
-###创建Bucket
+#####创建Bucket
 ```objective-c
 - (void)scsAddBucketOperation {
 
@@ -87,7 +97,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###删除Bucket
+#####删除Bucket
 ```objective-c
 - (void)scsDeleteBucketOperation {
 
@@ -99,8 +109,8 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-##Object操作
-###列取指定Bucket下的全部Object
+####Object操作
+#####列取指定Bucket下的全部Object
 ```objective-c
 - (void)scsListObjectOperation {
 
@@ -112,7 +122,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###上传Object
+#####上传Object
 ```objective-c
 - (void)scsAddObjectOperation {
 
@@ -131,7 +141,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###秒传Object
+#####秒传Object
 ```objective-c
 - (void)scsAddObjectRelaxOperation {
 
@@ -150,7 +160,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###拷贝Object
+#####拷贝Object
 ```objective-c
 - (void)scsCopyObjectOperation {
 
@@ -169,7 +179,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###删除Object
+#####删除Object
 ```objective-c
 - (void)scsDeleteObjectOperation {
 
@@ -181,7 +191,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###下载Object
+#####下载Object
 ```objective-c
 - (void)scsDownloadObjectOperation {
 
@@ -195,7 +205,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###更新Object
+#####更新Object
 ```objective-c
 - (void)scsUpdateObjectOperation {
 
@@ -212,7 +222,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###获取Object信息
+#####获取Object信息
 ```objective-c
 - (void)scsGetInfoObjectOperation {
 
@@ -226,10 +236,10 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-##ACL操作
+####ACL操作
 > * ACL详细内容请查阅：http://sinastor.appsina.com/?c=doc&a=guide&section=acl
 
-###获取Bucket的ACL信息
+#####获取Bucket的ACL信息
 ```objective-c
 - (void)scsGetACLBucketOperation {
 
@@ -241,7 +251,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###设置Bucket的ACL信息
+######设置Bucket的ACL信息
 ```objective-c
 - (void)scsSetACLBucketOperation {
 
@@ -258,7 +268,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###Example
+#####Example
 
 ```objective-c
 - (void)scsSetACLBucketOperation {
@@ -276,7 +286,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###获取Object的ACL信息
+#####获取Object的ACL信息
 ```objective-c
 - (void)scsGetACLObjectOperation {
 
@@ -289,7 +299,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 }
 ```
 
-###设置Object的ACL信息
+#####设置Object的ACL信息
 ```objective-c
 - (void)scsSetACLObjectOperation {
 
