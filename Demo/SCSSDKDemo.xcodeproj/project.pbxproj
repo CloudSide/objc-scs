@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD1B2D4719061EEF00C29EA4 /* libSCSSDK_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1B2D4419061ECD00C29EA4 /* libSCSSDK_IOS.a */; };
+		AD1B2D4919061EFD00C29EA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1B2D4819061EFD00C29EA4 /* UIKit.framework */; };
+		AD1B2D4B19061F0D00C29EA4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1B2D4A19061F0D00C29EA4 /* Cocoa.framework */; };
+		AD1B2D4C19061F1100C29EA4 /* libSCSSDK_OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1B2D4619061ECD00C29EA4 /* libSCSSDK_OSX.a */; };
+		AD1B2D4E1906206B00C29EA4 /* Config in Resources */ = {isa = PBXBuildFile; fileRef = AD1B2D4D1906206B00C29EA4 /* Config */; };
+		AD1B2D4F1906206B00C29EA4 /* Config in Resources */ = {isa = PBXBuildFile; fileRef = AD1B2D4D1906206B00C29EA4 /* Config */; };
 		AD9EBD1218F67D2D006C59A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBD1118F67D2D006C59A8 /* Foundation.framework */; };
 		AD9EBD1418F67D2D006C59A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBD1318F67D2D006C59A8 /* CoreGraphics.framework */; };
-		AD9EBD1618F67D2D006C59A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBD1518F67D2D006C59A8 /* UIKit.framework */; };
 		AD9EBD1C18F67D2D006C59A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBD1A18F67D2D006C59A8 /* InfoPlist.strings */; };
 		AD9EBD1E18F67D2D006C59A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBD1D18F67D2D006C59A8 /* main.m */; };
 		AD9EBD2218F67D2D006C59A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBD2118F67D2D006C59A8 /* AppDelegate.m */; };
 		AD9EBD2418F67D2D006C59A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBD2318F67D2D006C59A8 /* Images.xcassets */; };
-		AD9EBD4418F67D64006C59A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBD4318F67D64006C59A8 /* Cocoa.framework */; };
 		AD9EBD4E18F67D65006C59A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBD4C18F67D65006C59A8 /* InfoPlist.strings */; };
 		AD9EBD5018F67D65006C59A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBD4F18F67D65006C59A8 /* main.m */; };
 		AD9EBD5418F67D65006C59A8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBD5218F67D65006C59A8 /* Credits.rtf */; };
@@ -24,8 +28,6 @@
 		AD9EBD9818F67F2A006C59A8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBD9718F67F2A006C59A8 /* RootViewController.m */; };
 		AD9EBD9C18F684C2006C59A8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBD9B18F684C2006C59A8 /* Security.framework */; };
 		AD9EBD9E18F684DD006C59A8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBD9D18F684DD006C59A8 /* CoreFoundation.framework */; };
-		AD9EBDAE18F688EA006C59A8 /* libSCSSDK_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBDA718F688C1006C59A8 /* libSCSSDK_IOS.a */; };
-		AD9EBDAF18F688F0006C59A8 /* libSCSSDK_OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9EBDAB18F688C1006C59A8 /* libSCSSDK_OSX.a */; };
 		AD9EBDCD18F69A88006C59A8 /* demo_pic_0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBDCC18F69A88006C59A8 /* demo_pic_0.png */; };
 		AD9EBDD518F6BE25006C59A8 /* OperationResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBDD418F6BE25006C59A8 /* OperationResultViewController.m */; };
 		AD9EBDEA18FBE3FC006C59A8 /* OperationDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBDE918FBE3FC006C59A8 /* OperationDetailView.m */; };
@@ -34,20 +36,19 @@
 		AD9EBDF718FBF232006C59A8 /* CustomCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBDF618FBF232006C59A8 /* CustomCellView.m */; };
 		AD9EBDF918FC0761006C59A8 /* demo_pic_0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBDF818FC0761006C59A8 /* demo_pic_0.png */; };
 		AD9EBDFB18FC1F14006C59A8 /* accessKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBDFA18FC1F14006C59A8 /* accessKey.plist */; };
-		AD9EBDFD18FC215C006C59A8 /* accessKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBDFC18FC215C006C59A8 /* accessKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AD9EBDA618F688C1006C59A8 /* PBXContainerItemProxy */ = {
+		AD1B2D4319061ECD00C29EA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AD9EBD9F18F688C0006C59A8 /* SCSSDK.xcodeproj */;
+			containerPortal = AD1B2D3E19061ECC00C29EA4 /* SCSSDK.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AD2E977A18F668920017D61C;
 			remoteInfo = SCSSDK_IOS;
 		};
-		AD9EBDAA18F688C1006C59A8 /* PBXContainerItemProxy */ = {
+		AD1B2D4519061ECD00C29EA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AD9EBD9F18F688C0006C59A8 /* SCSSDK.xcodeproj */;
+			containerPortal = AD1B2D3E19061ECC00C29EA4 /* SCSSDK.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AD2E97A518F668A00017D61C;
 			remoteInfo = SCSSDK_OSX;
@@ -55,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD1B2D3E19061ECC00C29EA4 /* SCSSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SCSSDK.xcodeproj; path = ../SCSSDK/SCSSDK.xcodeproj; sourceTree = "<group>"; };
+		AD1B2D4819061EFD00C29EA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AD1B2D4A19061F0D00C29EA4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		AD1B2D4D1906206B00C29EA4 /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Config; sourceTree = "<group>"; };
 		AD9EBD0E18F67D2D006C59A8 /* SCSSDKDemo_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCSSDKDemo_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9EBD1118F67D2D006C59A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AD9EBD1318F67D2D006C59A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,7 +90,6 @@
 		AD9EBD9718F67F2A006C59A8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AD9EBD9B18F684C2006C59A8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		AD9EBD9D18F684DD006C59A8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		AD9EBD9F18F688C0006C59A8 /* SCSSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SCSSDK.xcodeproj; path = SCSSDK/SCSSDK.xcodeproj; sourceTree = "<group>"; };
 		AD9EBDCC18F69A88006C59A8 /* demo_pic_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo_pic_0.png; sourceTree = "<group>"; };
 		AD9EBDD318F6BE25006C59A8 /* OperationResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationResultViewController.h; sourceTree = "<group>"; };
 		AD9EBDD418F6BE25006C59A8 /* OperationResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationResultViewController.m; sourceTree = "<group>"; };
@@ -99,7 +103,6 @@
 		AD9EBDF618FBF232006C59A8 /* CustomCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellView.m; sourceTree = "<group>"; };
 		AD9EBDF818FC0761006C59A8 /* demo_pic_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo_pic_0.png; sourceTree = "<group>"; };
 		AD9EBDFA18FC1F14006C59A8 /* accessKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = accessKey.plist; sourceTree = "<group>"; };
-		AD9EBDFC18FC215C006C59A8 /* accessKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = accessKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,11 +110,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD9EBDAE18F688EA006C59A8 /* libSCSSDK_IOS.a in Frameworks */,
+				AD1B2D4919061EFD00C29EA4 /* UIKit.framework in Frameworks */,
+				AD1B2D4719061EEF00C29EA4 /* libSCSSDK_IOS.a in Frameworks */,
 				AD9EBD9E18F684DD006C59A8 /* CoreFoundation.framework in Frameworks */,
 				AD9EBD9C18F684C2006C59A8 /* Security.framework in Frameworks */,
 				AD9EBD1418F67D2D006C59A8 /* CoreGraphics.framework in Frameworks */,
-				AD9EBD1618F67D2D006C59A8 /* UIKit.framework in Frameworks */,
 				AD9EBD1218F67D2D006C59A8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,18 +123,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD9EBDAF18F688F0006C59A8 /* libSCSSDK_OSX.a in Frameworks */,
-				AD9EBD4418F67D64006C59A8 /* Cocoa.framework in Frameworks */,
+				AD1B2D4C19061F1100C29EA4 /* libSCSSDK_OSX.a in Frameworks */,
+				AD1B2D4B19061F0D00C29EA4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD1B2D3319061BC100C29EA4 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				AD1B2D3E19061ECC00C29EA4 /* SCSSDK.xcodeproj */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
+		AD1B2D3F19061ECC00C29EA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD1B2D4419061ECD00C29EA4 /* libSCSSDK_IOS.a */,
+				AD1B2D4619061ECD00C29EA4 /* libSCSSDK_OSX.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AD9EBD0318F67D19006C59A8 = {
 			isa = PBXGroup;
 			children = (
-				AD9EBD9F18F688C0006C59A8 /* SCSSDK.xcodeproj */,
+				AD1B2D4D1906206B00C29EA4 /* Config */,
+				AD1B2D3319061BC100C29EA4 /* SDK */,
 				AD9EBD1718F67D2D006C59A8 /* SCSSDKDemo_IOS */,
 				AD9EBD4918F67D65006C59A8 /* SCSSDKDemo_OSX */,
 				AD9EBD1018F67D2D006C59A8 /* Frameworks */,
@@ -151,6 +172,8 @@
 		AD9EBD1018F67D2D006C59A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD1B2D4A19061F0D00C29EA4 /* Cocoa.framework */,
+				AD1B2D4819061EFD00C29EA4 /* UIKit.framework */,
 				AD9EBD9D18F684DD006C59A8 /* CoreFoundation.framework */,
 				AD9EBD9B18F684C2006C59A8 /* Security.framework */,
 				AD9EBD1118F67D2D006C59A8 /* Foundation.framework */,
@@ -224,7 +247,6 @@
 		AD9EBD4A18F67D65006C59A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AD9EBDFC18FC215C006C59A8 /* accessKey.plist */,
 				AD9EBDF818FC0761006C59A8 /* demo_pic_0.png */,
 				AD9EBD4B18F67D65006C59A8 /* SCSSDKDemo_OSX-Info.plist */,
 				AD9EBD4C18F67D65006C59A8 /* InfoPlist.strings */,
@@ -233,15 +255,6 @@
 				AD9EBD5218F67D65006C59A8 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AD9EBDA018F688C0006C59A8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AD9EBDA718F688C1006C59A8 /* libSCSSDK_IOS.a */,
-				AD9EBDAB18F688C1006C59A8 /* libSCSSDK_OSX.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,8 +315,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = AD9EBDA018F688C0006C59A8 /* Products */;
-					ProjectRef = AD9EBD9F18F688C0006C59A8 /* SCSSDK.xcodeproj */;
+					ProductGroup = AD1B2D3F19061ECC00C29EA4 /* Products */;
+					ProjectRef = AD1B2D3E19061ECC00C29EA4 /* SCSSDK.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -315,18 +328,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		AD9EBDA718F688C1006C59A8 /* libSCSSDK_IOS.a */ = {
+		AD1B2D4419061ECD00C29EA4 /* libSCSSDK_IOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSCSSDK_IOS.a;
-			remoteRef = AD9EBDA618F688C1006C59A8 /* PBXContainerItemProxy */;
+			remoteRef = AD1B2D4319061ECD00C29EA4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		AD9EBDAB18F688C1006C59A8 /* libSCSSDK_OSX.a */ = {
+		AD1B2D4619061ECD00C29EA4 /* libSCSSDK_OSX.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSCSSDK_OSX.a;
-			remoteRef = AD9EBDAA18F688C1006C59A8 /* PBXContainerItemProxy */;
+			remoteRef = AD1B2D4519061ECD00C29EA4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -336,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD1B2D4E1906206B00C29EA4 /* Config in Resources */,
 				AD9EBDFB18FC1F14006C59A8 /* accessKey.plist in Resources */,
 				AD9EBDCD18F69A88006C59A8 /* demo_pic_0.png in Resources */,
 				AD9EBD1C18F67D2D006C59A8 /* InfoPlist.strings in Resources */,
@@ -349,9 +363,9 @@
 			files = (
 				AD9EBD4E18F67D65006C59A8 /* InfoPlist.strings in Resources */,
 				AD9EBD5C18F67D65006C59A8 /* Images.xcassets in Resources */,
+				AD1B2D4F1906206B00C29EA4 /* Config in Resources */,
 				AD9EBD5418F67D65006C59A8 /* Credits.rtf in Resources */,
 				AD9EBDF918FC0761006C59A8 /* demo_pic_0.png in Resources */,
-				AD9EBDFD18FC215C006C59A8 /* accessKey.plist in Resources */,
 				AD9EBD5A18F67D65006C59A8 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,7 +441,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/**",
+					"$(SRCROOT)/../SCSSDK/**",
 				);
 				SDKROOT = iphoneos;
 			};
@@ -439,7 +453,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/**",
+					"$(SRCROOT)/../SCSSDK/**",
 				);
 				SDKROOT = iphoneos;
 			};
