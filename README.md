@@ -14,12 +14,13 @@ Objective-C SDK (iOS and OSX) for 新浪云存储
 > * OSX: 10.8及以上。
 
 ####相关配置：
-> * 1、将SCSSDK文件夹拷贝到你的工程目录下；
+> * 1、将SDK文件夹拷贝到你的工程目录下；
 > * 2、打开xcode，将SCSSDK.xcodeproj拖动到你的工程中；
 > * 3、选择你的工程，在右侧选择Build Settings，并设置Other Linker Flags 为 -ObjC -all_load；
 > * 4、选择Build Phases，在Link Binary With Libraries中添加如下：
-> * _iOS_：libSCSSDK_IOS.a；Foundation.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；CoreGraphics.framework ；UIKit.framework；
-> * _OSX_：libSCSSDK_OSX.a；Cocoa.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；AppKit.framework。
+>  * _iOS_：libSCSSDK_IOS.a；Foundation.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；CoreGraphics.framework ；UIKit.framework；
+>  * _OSX_：libSCSSDK_OSX.a；Cocoa.framework ；CoreData.framework ；CoreFoundation.framework ；Security.framework ；AppKit.framework；
+> * 5、选择project，Build Settings，在Header Search Paths中添加SDK所在的相对路径，例如demo中$(SRCROOT)/../SCSSDK
 
 ###快速上手
 ####设置accessKey、secretKey
