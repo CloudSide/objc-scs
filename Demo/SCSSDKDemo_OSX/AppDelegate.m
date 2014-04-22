@@ -39,13 +39,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-
-    NSString *path = @"/Users/littlebox222/workspace/objc-scs/SCSSDKDemo_OSX/acacessKey.plist";
-    NSDictionary *file = [[NSDictionary alloc] initWithContentsOfFile: path];
     
     if ([kSCSAccessKey isEqualToString:@"YOUR ACCESS KEY"] || [kSCSSecretKey isEqualToString:@"YOUR SECRET KEY"]) {
         
-        NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"accessKey" ofType:@"plist"]];
+        NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config/Config" ofType:@"plist"]];
         
         if (dictionary == nil) {
             

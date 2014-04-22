@@ -35,7 +35,6 @@
 		AD9EBDF418FBE862006C59A8 /* OperationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBDF318FBE862006C59A8 /* OperationListView.m */; };
 		AD9EBDF718FBF232006C59A8 /* CustomCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9EBDF618FBF232006C59A8 /* CustomCellView.m */; };
 		AD9EBDF918FC0761006C59A8 /* demo_pic_0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBDF818FC0761006C59A8 /* demo_pic_0.png */; };
-		AD9EBDFB18FC1F14006C59A8 /* accessKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9EBDFA18FC1F14006C59A8 /* accessKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +101,6 @@
 		AD9EBDF518FBF232006C59A8 /* CustomCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellView.h; sourceTree = "<group>"; };
 		AD9EBDF618FBF232006C59A8 /* CustomCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellView.m; sourceTree = "<group>"; };
 		AD9EBDF818FC0761006C59A8 /* demo_pic_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo_pic_0.png; sourceTree = "<group>"; };
-		AD9EBDFA18FC1F14006C59A8 /* accessKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = accessKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,10 +149,10 @@
 		AD9EBD0318F67D19006C59A8 = {
 			isa = PBXGroup;
 			children = (
-				AD1B2D4D1906206B00C29EA4 /* Config */,
 				AD1B2D3319061BC100C29EA4 /* SDK */,
 				AD9EBD1718F67D2D006C59A8 /* SCSSDKDemo_IOS */,
 				AD9EBD4918F67D65006C59A8 /* SCSSDKDemo_OSX */,
+				AD1B2D4D1906206B00C29EA4 /* Config */,
 				AD9EBD1018F67D2D006C59A8 /* Frameworks */,
 				AD9EBD0F18F67D2D006C59A8 /* Products */,
 			);
@@ -209,7 +207,6 @@
 				AD9EBD1A18F67D2D006C59A8 /* InfoPlist.strings */,
 				AD9EBD1D18F67D2D006C59A8 /* main.m */,
 				AD9EBD1F18F67D2D006C59A8 /* SCSSDKDemo_IOS-Prefix.pch */,
-				AD9EBDFA18FC1F14006C59A8 /* accessKey.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -350,7 +347,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD1B2D4E1906206B00C29EA4 /* Config in Resources */,
-				AD9EBDFB18FC1F14006C59A8 /* accessKey.plist in Resources */,
 				AD9EBDCD18F69A88006C59A8 /* demo_pic_0.png in Resources */,
 				AD9EBD1C18F67D2D006C59A8 /* InfoPlist.strings in Resources */,
 				AD9EBD2418F67D2D006C59A8 /* Images.xcassets in Resources */,
