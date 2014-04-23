@@ -37,6 +37,9 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
 //若全局只使用唯一的queue，方法如下：
 //[SCSOperationQueue sharedQueue];
+
+//可设置delegate用来设置队列的最大长度，详情参考代码文档
+//[[SCSOperationQueue sharedQueue] setDelegate:self];
 ```
 
 #####Example
@@ -52,9 +55,6 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 - (void)viewDidLoad {
     ...
     [[SCSOperationQueue sharedQueue] addQueueListener:self];
-
-    //可设置delegate用来设置队列的最大长度，详情参考代码文档
-    //[[SCSOperationQueue sharedQueue] setDelegate:self];
     ...
 }
 
@@ -115,6 +115,20 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     SCSDeleteBucketOperation *op = [[[SCSDeleteBucketOperation alloc] initWithBucket:bucket] autorelease];
     
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
+}
+```
+
+#####生成获取Bucket的URL
+```objective-c
+- (void)scsGetBucketURL {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+
+    NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:4133933441];
+    NSString *urlString = [[bucket urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
+
+    //获取public bucket的URL
+    //NSString *urlString = [[bucket urlWithSign:NO expires:nil ip:nil security:NO] absoluteString];
 }
 ```
 
@@ -234,6 +248,21 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     SCSGetInfoObjectOperation *op = [[[SCSGetInfoObjectOperation alloc] initWithObject:object] autorelease];
 
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
+}
+```
+
+#####生成获取Object的URL
+```objective-c
+- (void)scsGetObjectURL {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"]] autorelease];
+    
+    NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:4133933441];
+    NSString *urlString = [[object urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
+
+    //获取public object的URL
+    //NSString *urlString = [[object urlWithSign:NO expires:nil ip:nil security:NO] absoluteString];
 }
 ```
 

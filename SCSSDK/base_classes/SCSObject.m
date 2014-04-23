@@ -8,6 +8,10 @@
 
 #import "SCSObject.h"
 
+#import "SCSConnectionInfo.h"
+#import "SCSExtensions.h"
+#import "SCSBucket.h"
+
 NSString *SCSObjectFilePathDataSourceKey =           @"SCSObjectFilePathDataSourceKey";
 NSString *SCSObjectNSDataSourceKey =                 @"SCSObjectNSDataSourceKey";
 
@@ -155,7 +159,7 @@ NSString *SCSResponseDataObjectMetadataFileMetaKey =    @"file-meta";
 
 - (void)setUserDefinedMetadata:(NSDictionary *)md
 {
-    NSMutableDictionary *mutableMetadata = [[self metadata] mutableCopy];
+    NSMutableDictionary *mutableMetadata = [[[self metadata] mutableCopy] autorelease];
     NSString *metadataKey = nil;
     NSEnumerator *metadataKeyEnumerator = [md keyEnumerator];
     while (metadataKey = [metadataKeyEnumerator nextObject]) {
@@ -276,6 +280,16 @@ NSString *SCSResponseDataObjectMetadataFileMetaKey =    @"file-meta";
     }else {
         return nil;
     }
+}
+
+- (NSURL *)urlWithSign:(BOOL)sign expires:(NSDate *)expires ip:(NSString *)ip security:(BOOL)security {
+    
+    if (sign) {
+        
+        return [[SCSConnectionInfo sharedConnectionInfo] authorizationURLWithBucket:[[self bucket] name] object:[self key] expires:expires ip:ip security:security];
+    }
+    
+    return [[SCSConnectionInfo sharedConnectionInfo] publicURLWithBucket:[[self bucket] name] object:[self key] security:security];
 }
 
 - (id)copyWithZone:(NSZone *)zone

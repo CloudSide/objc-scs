@@ -12,16 +12,6 @@
 #import "OperationResultView.h"
 #import "OperationListView.h"
 
-#define kSCSAccessKey              @"YOUR ACCESS KEY"
-#define kSCSSecretKey              @"YOUR SECRET KEY"
-
-#ifndef kSCSAccessKey
-#error "别忘了填写你的accessKey"
-#endif
-
-#ifndef kSCSSecretKey
-#error "别忘了填写你的secretKey"
-#endif
 
 @implementation AppDelegate
 
@@ -40,38 +30,49 @@
 {
     // Insert code here to initialize your application
     
-    if ([kSCSAccessKey isEqualToString:@"YOUR ACCESS KEY"] || [kSCSSecretKey isEqualToString:@"YOUR SECRET KEY"]) {
+    NSString *accessKey = @"Your Access Key";
+    NSString *secretKey = @"Your Secret Key";
+    
+    
+    
+    
+    
+    
+    /* 您可以添加Config.plist文件到Config目录下，用来存放accessKey与secretKey，若未添加此处可忽略 */
+    /* ----------------------------------------------- */
+    NSDictionary *dictionary = [self keys];
+    
+    if (dictionary != nil && [dictionary isKindOfClass:[NSDictionary class]]) {
         
-        NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config/Config" ofType:@"plist"]];
-        
-        if (dictionary == nil) {
-            
-            NSAssert(dictionary==nil, @"请设置您的accessKey及secretKey");
-            return;
-            
-        }else {
-            
-            NSString *accessKey = [dictionary objectForKey:@"accessKey"];
-            NSString *secretKey = [dictionary objectForKey:@"secretKey"];
-            
-            SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:[accessKey retain] secretKey:[secretKey retain] userInfo:nil secureConnection:NO];
-            [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
-        }
-        
-    }else {
-        
-        SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:kSCSAccessKey secretKey:kSCSSecretKey userInfo:nil secureConnection:NO];
-        [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
+        accessKey = [dictionary objectForKey:@"accessKey"];
+        secretKey = [dictionary objectForKey:@"secretKey"];
     }
     
-    OperationListView *operationListView = [[[OperationListView alloc] initWithFrame:NSMakeRect(15, 15, 180, 460)] autorelease];
+    /* ----------------------------------------------- */
+    
+    
+    
+    
+    
+    
+    NSAssert(!([accessKey isEqualToString:@"Your Access Key"] || [secretKey isEqualToString:@"Your Secret Key"]), @"请设置您的accessKey及secretKey");
+    
+    SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:accessKey secretKey:secretKey userInfo:nil secureConnection:NO];
+    [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
+    
+    OperationListView *operationListView = [[[OperationListView alloc] initWithFrame:NSMakeRect(15, 15, 180, 518)] autorelease];
     [self.window.contentView addSubview:operationListView];
     
-    self.detailView = [[[OperationDetailView alloc] initWithFrame:NSMakeRect(200, 375, 570, 100)] autorelease];
+    self.detailView = [[[OperationDetailView alloc] initWithFrame:NSMakeRect(200, 433, 570, 100)] autorelease];
     [self.window.contentView addSubview:_detailView];
     
-    self.resultView = [[[OperationResultView alloc] initWithFrame:NSMakeRect(200, 15, 570, 350)] autorelease];
+    self.resultView = [[[OperationResultView alloc] initWithFrame:NSMakeRect(200, 15, 570, 408)] autorelease];
     [self.window.contentView addSubview:_resultView];
+}
+
+- (NSDictionary *)keys {
+    
+    return [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config/Config" ofType:@"plist"]];
 }
 
 @end

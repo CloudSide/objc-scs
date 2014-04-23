@@ -52,7 +52,7 @@
         return 11;
     }else {
         
-        return 4;
+        return 6;
     }
 }
 
@@ -138,6 +138,12 @@
         }else if (indexPath.row == 3) {
             cell.textLabel.text = @"14: Object set acl";
             cell.detailTextLabel.text = @"设置object的ACL信息，方法：scsSetACLObjectOperation";
+        }else if (indexPath.row == 4) {
+            cell.textLabel.text = @"15: Bucket url";
+            cell.detailTextLabel.text = @"通过url授权，获取bucket的url，方法：scsGetBucketURL";
+        }else if (indexPath.row == 5) {
+            cell.textLabel.text = @"16: Object url";
+            cell.detailTextLabel.text = @"通过url授权，获取object的url，方法：scsGetObjectURL";
         }
     }
     
@@ -233,6 +239,16 @@
         //Object set acl
         if (row == 3) {
             [self scsSetACLObjectOperation];
+        }
+        
+        //Bucket url
+        if (row == 4) {
+            [self scsGetBucketURL];
+        }
+        
+        //Object url
+        if (row == 5) {
+            [self scsGetObjectURL];
         }
     }
     
@@ -432,6 +448,31 @@
     
     OperationResultViewController *operationResultViewController = [[[OperationResultViewController alloc] initWithOperation:op] autorelease];
     [self.navigationController pushViewController:operationResultViewController animated:YES];
+}
+
+- (void)scsGetBucketURL {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+    
+    NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:4133933441];
+    NSString *urlString = [[bucket urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Bucket URL" message:urlString delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
+    [alertView show];
+    [alertView release];
+}
+
+- (void)scsGetObjectURL {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"]] autorelease];
+    
+    NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:4133933441];
+    NSString *urlString = [[object urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Object URL" message:urlString delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
+    [alertView show];
+    [alertView release];
 }
 
 @end

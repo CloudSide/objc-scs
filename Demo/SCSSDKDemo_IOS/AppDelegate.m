@@ -13,17 +13,6 @@
 #import "SCSListBucketOperation.h"
 
 
-#define kSCSAccessKey              @"YOUR ACCESS KEY"
-#define kSCSSecretKey              @"YOUR SECRET KEY"
-
-#ifndef kSCSAccessKey
-#error "别忘了填写你的accessKey"
-#endif
-
-#ifndef kSCSSecretKey
-#error "别忘了填写你的secretKey"
-#endif
-
 @implementation AppDelegate
 
 @synthesize navigationController = _navigationController;
@@ -39,33 +28,39 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    if ([kSCSAccessKey isEqualToString:@"YOUR ACCESS KEY"] || [kSCSSecretKey isEqualToString:@"YOUR SECRET KEY"]) {
+    NSString *accessKey = @"Your Access Key";
+    NSString *secretKey = @"Your Secret Key";
+    
+    
+    
+    
+    
+    
+    /* 您可以添加Config.plist文件到Config目录下，用来存放accessKey与secretKey，若未添加此处可忽略 */
+    /* ----------------------------------------------- */
+    NSDictionary *dictionary = [self keys];
+    
+    if (dictionary != nil && [dictionary isKindOfClass:[NSDictionary class]]) {
         
-        NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config/Config" ofType:@"plist"]];
-        
-        if (dictionary == nil) {
-            
-            NSAssert(dictionary==nil, @"请设置您的accessKey及secretKey");
-            return NO;
-            
-        }else {
-            
-            NSString *accessKey = [dictionary objectForKey:@"accessKey"];
-            NSString *secretKey = [dictionary objectForKey:@"secretKey"];
-            
-            SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:[accessKey retain] secretKey:[secretKey retain] userInfo:nil secureConnection:NO];
-            [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
-        }
-        
-    }else {
-        
-        SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:kSCSAccessKey secretKey:kSCSSecretKey userInfo:nil secureConnection:NO];
-        [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
+        accessKey = [dictionary objectForKey:@"accessKey"];
+        secretKey = [dictionary objectForKey:@"secretKey"];
     }
     
+    /* ----------------------------------------------- */
     
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    
+    
+    NSAssert(!([accessKey isEqualToString:@"Your Access Key"] || [secretKey isEqualToString:@"Your Secret Key"]), @"请设置您的accessKey及secretKey");
+    
+    SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:accessKey secretKey:secretKey userInfo:nil secureConnection:NO];
+    [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
+    
+    
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
     
@@ -105,6 +100,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (NSDictionary *)keys {
+    
+    return [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config/Config" ofType:@"plist"]];
 }
 
 @end

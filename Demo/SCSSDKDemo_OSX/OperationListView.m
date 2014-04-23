@@ -58,7 +58,7 @@
 
 #pragma mark - table view data source
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-	return 15;
+	return 17;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
@@ -119,6 +119,12 @@
         }
         if (row == 14) {
             cell.textLabel.stringValue = @"14: Object upload relax";
+        }
+        if (row == 15) {
+            cell.textLabel.stringValue = @"15: Bucket url";
+        }
+        if (row == 16) {
+            cell.textLabel.stringValue = @"16: Object rul";
         }
         
 		return cell;
@@ -235,6 +241,20 @@
         [self scsAddObjectRelaxOperation];
         _appDelegate.detailView.string = @"\n\n秒传方式上传文件，方法：scsAddObjectRelaxOperation";
         _appDelegate.resultView.theTextView.string = @"";
+    }
+    
+    //Bucket url
+    if (row == 15) {
+        _appDelegate.detailView.string = @"\n\n通过url授权，获取bucket的url，方法：scsGetBucketURL";
+        _appDelegate.resultView.theTextView.string = @"";
+        [self scsGetBucketURL];
+    }
+    
+    //Object url
+    if (row == 16) {
+        _appDelegate.resultView.theTextView.string = @"";
+        [self scsGetObjectURL];
+        _appDelegate.detailView.string = @"\n\n通过url授权，获取object的url，方法：scsGetObjectURL";
     }
 }
 
@@ -417,6 +437,24 @@
     
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
 }
+
+- (void)scsGetBucketURL {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+
+    NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:4133933441];
+    _appDelegate.resultView.theTextView.string = [[bucket urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
+}
+
+- (void)scsGetObjectURL {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"]] autorelease];
+    
+    NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:4133933441];
+    _appDelegate.resultView.theTextView.string = [[object urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
+}
+
 
 #pragma mark - SCSOperationQueueNotifications
 

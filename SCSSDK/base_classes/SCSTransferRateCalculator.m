@@ -67,7 +67,7 @@
 
 - (id)init
 {
-	[super init];
+	self = [super init];
 	_displayAverageRate = YES;
 	_externalUnit = SCSKibibyteUnit;
 	_externalRate = SCSPerSecondRate;

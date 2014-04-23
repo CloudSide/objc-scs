@@ -73,7 +73,7 @@ static NSString *SCSOperationInfoAddObjectRelaxOperationFileSizeKey = @"SCSOpera
 
 - (NSDictionary *)additionalHTTPRequestHeaders
 {
-    SCSObject *object = [self object];
+//    SCSObject *object = [self object];
     
     NSMutableDictionary *additionalMetadata = [NSMutableDictionary dictionary];
     

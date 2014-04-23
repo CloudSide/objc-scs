@@ -88,6 +88,15 @@ extern NSString *SCSBucketACLKey;
  */
 - (NSDictionary *)aclDict;
 
+/*!Get the url of the bucket by url authorization.
+ \param sign Whether the url should be signed. If YES, the url would has ssig query. If NO, used for get public bucket url.
+ \param expires The expire time of the url. It could be nil for the public bucket.
+ \param ip The authorized ip that can get the bucket through the url.
+ \param security The url use the http (NO) or https (YES).
+ \returns The url of the bucket by url authorization.
+ */
+- (NSURL *)urlWithSign:(BOOL)sign expires:(NSDate *)expires ip:(NSString *)ip security:(BOOL)security;
+
 /*!Get the description of the SCSBucket.
  \returns The description of the SCSBucket.
  */

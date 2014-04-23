@@ -78,14 +78,6 @@ static void ReadStreamClientCallBack(CFReadStreamRef stream, CFStreamEventType t
     [((SCSOperation *)clientCallBackInfo) handleNetworkEvent:type];
 }
 
-static void *myRetainCallback(void *info) {
-    return (void *)[(NSObject *)info retain];
-}
-
-static void myReleaseCallback(void *info) {
-    [(NSObject *)info release];
-}
-
 
 #pragma mark -
 
@@ -546,14 +538,7 @@ static void myReleaseCallback(void *info) {
 
 - (void)handleStreamOpenCompleted
 {
-    //    NSLog(@"handleStreamOpenCompleted");
     
-    // One should not close a stream once it is added to the S3PersistentCFReadStreamPool
-    // S3PersistentCFReadStreamPool will take care of closing a stream so other persistent
-    // streams can be enqueued on it.
-    // If an error occurs or the stream has been canceled unregister the client and unschedule
-    // from the run loop and ask the S3PersistentCFReadStreamPool to remove the stream.
-    // Removing the stream will close the stream.
     SCSPersistentCFReadStreamPool *sharedPool = [SCSPersistentCFReadStreamPool sharedPersistentCFReadStreamPool];
     if ([sharedPool addOpenedPersistentCFReadStream:httpOperationReadStream inQueuePosition:[self queuePosition]] == NO) {
         //        NSLog(@"Not added");
@@ -741,40 +726,6 @@ static void myReleaseCallback(void *info) {
     }
 }
 
-// Convenience method which setup an NSError from HTTP status and data by checking S3 error XML Documents
-- (NSError*)errorFromHTTPRequestStatus:(int)status data:(NSData*)aData;
-{
-    NSError* aError = nil;
-//    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-//    [dictionary setObject:[NSNumber numberWithInt:status] forKey:S3_ERROR_HTTP_STATUS_KEY];
-//    
-//    NSArray *a;
-//    NSXMLDocument *d = [[[NSXMLDocument alloc] initWithData:aData options:NSXMLDocumentTidyXML error:&error] autorelease];
-//    if (aError!=NULL)
-//        [dictionary setObject:aError forKey:NSUnderlyingErrorKey];
-//    
-//    a = [[d rootElement] nodesForXPath:@"//Code" error:&aError];
-//    if ([a count]==1) {
-//        [dictionary setObject:[[a objectAtIndex:0] stringValue] forKey:NSLocalizedDescriptionKey];
-//        [dictionary setObject:[[a objectAtIndex:0] stringValue] forKey:S3_ERROR_CODE_KEY];
-//    }
-//    
-//    a = [[d rootElement] nodesForXPath:@"//Message" error:&error];
-//    if (error!=NULL)
-//        [dictionary setObject:error forKey:NSUnderlyingErrorKey];
-//    if ([a count]==1)
-//        [dictionary setObject:[[a objectAtIndex:0] stringValue] forKey:NSLocalizedRecoverySuggestionErrorKey];
-//    
-//    a = [[d rootElement] nodesForXPath:@"//Resource" error:&error];
-//    if (error!=NULL)
-//        [dictionary setObject:error forKey:NSUnderlyingErrorKey];
-//    if ([a count]==1)
-//        [dictionary setObject:[[a objectAtIndex:0] stringValue] forKey:S3_ERROR_RESOURCE_KEY];
-//    
-//    return [NSError errorWithDomain:S3_ERROR_DOMAIN code:status userInfo:dictionary];
-    
-    return aError;
-}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

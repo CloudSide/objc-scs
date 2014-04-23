@@ -47,7 +47,7 @@ static const short base64DecodingTable[] =
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     [dateFormatter setDateFormat:dateFormat];
     
-    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    NSLocale *usLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
 
     //[dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setLocale:usLocale];
@@ -460,6 +460,16 @@ static const short base64DecodingTable[] =
 	return [(NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
                                                                (CFStringRef)self, NULL, escapeChars, kCFStringEncodingUTF8)
 			autorelease];
+}
+
+- (NSString *)URLEncodedStringWithCFStringEncoding:(CFStringEncoding)encoding
+{
+    return [(NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[self mutableCopy] autorelease], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"), encoding) autorelease];
+}
+
+- (NSString *)URLEncodedString
+{
+	return [self URLEncodedStringWithCFStringEncoding:kCFStringEncodingUTF8];
 }
 
 @end

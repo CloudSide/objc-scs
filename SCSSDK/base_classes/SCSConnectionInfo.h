@@ -141,4 +141,22 @@
  */
 - (CFHTTPMessageRef)newCFHTTPMessageRefFromOperation:(SCSOperation *)operation;
 
+/*!Generate the url for a public bucket.
+ \param bucket The name of the bucket.
+ \param object The name of the object. Here it should be nil.
+ \param security The url use the http (NO) or https (YES).
+ \returns The url for a public bucket.
+ */
+- (NSURL *)publicURLWithBucket:(NSString *)bucket object:(NSString *)object security:(BOOL)security;
+
+/*!Generate the authorized url for a private bucket.
+ \param bucket The name of the bucket.
+ \param object The name of the object. Here it should be nil.
+ \param expires The expires time for the url.
+ \param ip The authorized ip that can get the bucket through the url.
+ \param security The url use the http (NO) or https (YES).
+ \returns The authorized url for a private bucket.
+ */
+- (NSURL *)authorizationURLWithBucket:(NSString *)bucket object:(NSString *)object expires:(NSDate *)expires ip:(NSString *)ip security:(BOOL)security;
+
 @end

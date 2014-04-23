@@ -117,6 +117,15 @@ extern NSString *SCSUserDefinedObjectMetadataPrefixKey;
  */
 - (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key;
 
+/*!Get the url of the object by url authorization.
+ \param sign Whether the url should be signed. If YES, the url would has ssig query. If NO, used for get public object url.
+ \param expires The expire time of the url. It could be nil for the public object.
+ \param ip The authorized ip that can get the object through the url.
+ \param security The url use the http (NO) or https (YES).
+ \returns The url of the object by url authorization.
+ */
+- (NSURL *)urlWithSign:(BOOL)sign expires:(NSDate *)expires ip:(NSString *)ip security:(BOOL)security;
+
 /*!Get the description of the SCSObject.
  \returns The description of the SCSObject.
  */

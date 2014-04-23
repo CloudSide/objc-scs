@@ -95,22 +95,6 @@ static NSString *SCSOperationInfoGetInfoObjectOperationObjectKey = @"SCSOperatio
     NSError *_error = nil;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:self.responseData options:kNilOptions error:&_error];
     
-//    NSMutableArray *result = [NSMutableArray array];
-//    
-//    if (_error == nil && json != nil) {
-//        
-//        for (id md in [json objectForKey:@"Contents"]) {
-//            
-//            SCSObject *object = [[[SCSObject alloc] initWithBucket:[self bucket]
-//                                                               key:[md valueForKey:@"Name"]
-//                                               userDefinedMetadata:nil
-//                                                          metadata:md
-//                                                    dataSourceInfo:nil] autorelease];
-//
-//            [result addObject:object];
-//        }
-//    }
-    
     SCSObject *object = [[[SCSObject alloc] initWithBucket:nil
                                                        key:[self key]
                                        userDefinedMetadata:nil

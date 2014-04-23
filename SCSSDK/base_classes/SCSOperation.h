@@ -172,8 +172,6 @@ typedef enum _SCSOperationState {
  */
 - (NSURL *)url;
 
-- (NSError*)errorFromHTTPRequestStatus:(int)status data:(NSData*)data;
-
 /*!Get the kind of the operation. This method must be implemented by subclasses.
  \returns The operation kind. A short human readable description of the operation.
  */
@@ -257,6 +255,5 @@ typedef enum _SCSOperationState {
  \returns Current locale date.
  */
 - (NSDate *)currentLocaleDate;
-
 
 @end

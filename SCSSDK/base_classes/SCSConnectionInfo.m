@@ -109,6 +109,8 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
 
 - (void)setAccessKey:(NSString *)accessKey {
     
+    accessKey = [accessKey copy];
+    [_accessKey release];
     _accessKey = accessKey;
 }
 
@@ -119,11 +121,13 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
 
 - (void)setSecretKey:(NSString *)secretKey {
     
+    secretKey = [secretKey copy];
+    [_secretKey release];
     _secretKey = secretKey;
 }
 
 - (NSString *)secretKey {
-    
+
     return _secretKey;
 }
 
@@ -188,6 +192,11 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
 - (NSDictionary *)userInfo
 {
     return _userInfo;
+}
+
+- (NSString *)signature:(NSString *)stringToSign {
+    
+    return [[[[stringToSign dataUsingEncoding:NSUTF8StringEncoding] sha1HMacWithKey:self.secretKey] encodeBase64] substringWithRange:NSMakeRange(5, 10)];
 }
 
 - (CFHTTPMessageRef)newCFHTTPMessageRefFromOperation:(SCSOperation *)operation
@@ -334,7 +343,7 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
         return NULL;
     }
     
-    NSString *signature = [[[[stringToSign dataUsingEncoding:NSUTF8StringEncoding] sha1HMacWithKey:secretAccessKey] encodeBase64] substringWithRange:NSMakeRange(5, 10)];
+    NSString *signature = [self signature:stringToSign];
     secretAccessKey = nil;
     authorization = [NSString stringWithFormat:@"SINA %@:%@", accessKey, signature];
     
@@ -444,5 +453,48 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
 {
     return [NSString stringWithFormat:@"<%@: -\n accessKey:%@\n secretKey:%@\n userInfo:%@\n secureConnection:%d\n portNumber:%d\n virtuallyHosted:%d\n hostEndpoint:%@\n>", [self class], [self accessKey], [self secretKey], [self userInfo], [self secureConnection], [self portNumber], [self virtuallyHosted], [self hostEndpoint]];
 }
+
+#pragma mark -
+#pragma mark Sign
+
+- (NSURL *)publicURLWithBucket:(NSString *)bucket object:(NSString *)object security:(BOOL)security {
+
+    NSString *urlString = [NSString stringWithFormat:@"%@://%@.%@/%@?formatter=json", security ? SCSSecureHTTPProtocolString : SCSInsecureHTTPProtocolString,
+                                                                                     bucket,
+                                                                                     SCSDefaultHostString,
+                                                                                     object ? [object stringByEscapingHTTPReserved] : @""];
+    
+    return [NSURL URLWithString:urlString];
+}
+
+- (NSURL *)authorizationURLWithBucket:(NSString *)bucket object:(NSString *)object expires:(NSDate *)expires ip:(NSString *)ip security:(BOOL)security {
+
+    
+    NSString *kid = [NSString stringWithFormat:@"sina,%@", self.accessKey];
+    
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@://%@.%@/%@?formatter=json&Expires=%ld&KID=%@", security ? SCSSecureHTTPProtocolString : SCSInsecureHTTPProtocolString,
+                                                                bucket,
+                                                                SCSDefaultHostString,
+                                                                object ? [object stringByEscapingHTTPReserved] : @"",
+                                                                (long)[expires timeIntervalSince1970],
+                                                                kid];
+
+    
+    // Build string to sign
+    NSMutableString *stringToSign = [NSMutableString stringWithFormat:@"GET\n\n\n%ld\n", (long)[expires timeIntervalSince1970]];
+    
+    [stringToSign appendFormat:@"/%@/%@", bucket, object ? [object stringByEscapingHTTPReserved] : @""];
+    
+    if (ip && [ip isKindOfClass:[NSString class]] && [ip length] > 0) {
+        
+        [stringToSign appendFormat:@"?ip=%@", ip];
+        [urlString appendFormat:@"&ip=%@", ip];
+    }
+    
+    [urlString appendFormat:@"&ssig=%@", [[self signature:stringToSign] URLEncodedString]];
+    
+    return [NSURL URLWithString:urlString];
+}
+
 
 @end

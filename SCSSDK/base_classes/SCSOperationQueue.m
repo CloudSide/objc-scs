@@ -107,19 +107,7 @@ static SCSOperationQueue *kSharedOperationQueue = nil;
         [self removeFromCurrentOperations:o];
         
         if ([o state] == SCSOperationError) {
-            // TODO: Figure out if the operation needs to be retried and send a new
-            // retry operation object to be retried as S3OperationObjectForRetryKey.
-            // It appears valid retry on error codes: OperationAborted, InternalError
-            //    if ([o state] == S3OperationError && [o allowsRetry] == YES) {
-            //        NSDictionary *errorDict = [[o error] userInfo];
-            //        NSString *errorCode = [errorDict objectForKey:S3_ERROR_CODE_KEY];
-            //        if ([errorCode isEqualToString:@"InternalError"] == YES || [errorCode isEqualToString:@"OperationAborted"] || errorCode == nil) {
-            //            // TODO: Create a retry operation from failed operation and add it to the operations to be performed.
-            //            //S3Operation *retryOperation = nil;
-            //            //[dict setObject:retryOperation forKey:S3OperationObjectForRetryKey];
-            //            //[self addToCurrentOperations:retryOperation];
-            //        }
-            //    }
+            
         }
     }
     

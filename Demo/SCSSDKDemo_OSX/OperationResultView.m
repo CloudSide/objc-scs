@@ -32,7 +32,7 @@
         [self setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
         
         
-        self.theTextView = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, contentSize.width, contentSize.height)];
+        self.theTextView = [[[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, contentSize.width, contentSize.height)] autorelease];
         [_theTextView setMinSize:NSMakeSize(0.0, contentSize.height)];
         [_theTextView setMaxSize:NSMakeSize(FLT_MAX, FLT_MAX)];
         [_theTextView setVerticallyResizable:YES];

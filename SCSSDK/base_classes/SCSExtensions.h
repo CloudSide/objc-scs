@@ -147,4 +147,17 @@
  */
 - (NSString *)stringByEscapingHTTPReserved;
 
+/*!Escape all Reserved characters from rfc 2396.
+ \returns The result string.
+ */
+- (NSString *)URLEncodedString;
+- (NSString *)URLEncodedStringWithCFStringEncoding:(CFStringEncoding)encoding;
+
+@end
+
+
+@interface NSURL (SCS)
+
+- (NSURL *)URLByAppendingQueryString:(NSString *)queryString;
+
 @end
