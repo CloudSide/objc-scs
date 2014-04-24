@@ -39,7 +39,7 @@ static NSString *SCSOperationInfoListObjectOperationDelimiterKey = @"SCSOperatio
         [theOperationInfo setObject:thePrefix forKey:SCSOperationInfoListObjectOperationPrefixKey];
     }
     if (theMaxKeys) {
-        [theOperationInfo setObject:[NSString stringWithFormat:@"%d", theMaxKeys] forKey:SCSOperationInfoListObjectOperationMaxKeysKey];
+        [theOperationInfo setObject:[NSString stringWithFormat:@"%ld", (long)theMaxKeys] forKey:SCSOperationInfoListObjectOperationMaxKeysKey];
     }
     if (theDelimiter) {
         [theOperationInfo setObject:theDelimiter forKey:SCSOperationInfoListObjectOperationDelimiterKey];

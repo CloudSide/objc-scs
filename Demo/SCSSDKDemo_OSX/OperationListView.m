@@ -268,7 +268,7 @@
 
 - (void)scsAddBucketOperation {
     
-    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-002" creationDate:nil consumedBytes:0 cannedAcl:SCSFastACLPublicReadWrite] autorelease];
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001" creationDate:nil consumedBytes:0 cannedAcl:SCSFastACLPublicReadWrite] autorelease];
     SCSAddBucketOperation *op = [[[SCSAddBucketOperation alloc] initWithBucket:bucket] autorelease];
     
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
