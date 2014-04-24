@@ -69,7 +69,7 @@ extern NSString *SCSUserDefinedObjectMetadataPrefixKey;
  \param acl String used for fast setting acl of the object. Could be nil.
  \returns The initialized SCSObject.
  */
-- (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key userDefinedMetadata:(NSDictionary *)udmd metadata:(NSDictionary *)md dataSourceInfo:(NSDictionary *)info fastACL:(NSString *)acl;
+- (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key userDefinedMetadata:(NSDictionary *)udmd metadata:(NSDictionary *)md dataSourceInfo:(NSDictionary *)info cannedAcl:(NSString *)acl;
 
 /*! Initializes an SCSObject with the bucket it is contained in, the key that identifies it in that bucket, user
  defined metadata and metadata that is stored along with the object and a data source that provides the data

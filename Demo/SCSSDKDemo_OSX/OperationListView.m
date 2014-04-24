@@ -268,7 +268,7 @@
 
 - (void)scsAddBucketOperation {
     
-    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-002" creationDate:nil consumedBytes:0 fastAcl:SCSFastACLPublicReadWrite] autorelease];
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-002" creationDate:nil consumedBytes:0 cannedAcl:SCSFastACLPublicReadWrite] autorelease];
     SCSAddBucketOperation *op = [[[SCSAddBucketOperation alloc] initWithBucket:bucket] autorelease];
     
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
@@ -318,7 +318,7 @@
     NSDictionary *metadata = [NSDictionary dictionaryWithObjectsAndKeys:fileSize,@"Content-Length",[NSString stringWithFormat:@"demo_pic_0.png"], @"Name", nil];
      */
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
-    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo cannedAcl:SCSFastACLPublicReadWrite] autorelease];
     SCSAddObjectOperation *op = [[[SCSAddObjectOperation alloc] initWithObject:object] autorelease];
     
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
@@ -340,7 +340,7 @@
     NSString *sha1 = @"cee648f4bd7a0f6de2c276f4b1d52a62d04a96d9";
 
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
-    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"] userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo cannedAcl:SCSFastACLPublicReadWrite] autorelease];
     SCSAddObjectRelaxOperation *op = [[[SCSAddObjectRelaxOperation alloc] initWithObject:object fileSha1:[sha1 retain] fileSize:fileSize] autorelease];
 
     [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];

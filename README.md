@@ -99,7 +99,9 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"要创建的Bucket名称"] autorelease];
     
     //创建时可设置bucket的acl属性
-    //SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"要创建的Bucket名称" creationDate:nil consumedBytes:0 fastAcl:SCSFastACLPublicReadWrite] autorelease];
+    /*
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"要创建的Bucket名称" creationDate:nil consumedBytes:0 cannedAcl:SCSFastACLPublicReadWrite] autorelease];
+    */
 
     SCSAddBucketOperation *op = [[[SCSAddBucketOperation alloc] initWithBucket:bucket] autorelease];
 
@@ -154,7 +156,9 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
     SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）" userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo] autorelease];
 
     //上传时可设置文件的acl属性
-    //SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）" userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo fastACL:SCSFastACLPublicReadWrite] autorelease];
+    /*
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:@"目标文件的key（前缀+文件名）" userDefinedMetadata:nil metadata:nil dataSourceInfo:fileInfo cannedAcl:SCSFastACLPublicReadWrite] autorelease];
+    */
 
     SCSAddObjectOperation *op = [[[SCSAddObjectOperation alloc] initWithObject:object] autorelease];
 

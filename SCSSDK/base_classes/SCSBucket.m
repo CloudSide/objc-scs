@@ -25,7 +25,7 @@ NSString *SCSBucketACLKey = @"x-amz-acl";
 
 @synthesize aclDict = _aclDict;
 
-- (id)initWithName:(NSString *)name creationDate:(NSDate *)date consumedBytes:(NSInteger)consumedBytes fastAcl:(NSString *)acl {
+- (id)initWithName:(NSString *)name creationDate:(NSDate *)date consumedBytes:(NSInteger)consumedBytes cannedAcl:(NSString *)acl {
     
     self = [super init];
     
@@ -49,7 +49,7 @@ NSString *SCSBucketACLKey = @"x-amz-acl";
 
 - (id)initWithName:(NSString *)name creationDate:(NSDate *)date consumedBytes:(NSInteger)consumedBytes
 {
-    return [self initWithName:name creationDate:date consumedBytes:consumedBytes fastAcl:nil];
+    return [self initWithName:name creationDate:date consumedBytes:consumedBytes cannedAcl:nil];
 }
 
 - (id)initWithName:(NSString *)name creationDate:(NSDate *)date
@@ -139,7 +139,7 @@ NSString *SCSBucketACLKey = @"x-amz-acl";
     return _aclDict;
 }
 
-- (unsigned long)hash
+- (NSUInteger)hash
 {
     return [_name hash];
 }
@@ -170,7 +170,7 @@ NSString *SCSBucketACLKey = @"x-amz-acl";
 
 - (NSString *)description {
     
-    return [NSString stringWithFormat:@"Bucket name: %@\nBucket creationDate: %@\nBucket consumedBytes : %ld\n", [self name], [self creationDate], [self consumedBytes]];
+    return [NSString stringWithFormat:@"Bucket name: %@\nBucket creationDate: %@\nBucket consumedBytes : %ld\n", [self name], [self creationDate], (long)[self consumedBytes]];
 }
 
 @end

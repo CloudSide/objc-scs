@@ -40,7 +40,7 @@ extern NSString *SCSBucketACLKey;
  \param acl String used for fast setting acl of the bucket.
  \returns The initialized SCS bucket.
  */
-- (id)initWithName:(NSString *)name creationDate:(NSDate *)date consumedBytes:(NSInteger)consumedBytes fastAcl:(NSString *)acl;
+- (id)initWithName:(NSString *)name creationDate:(NSDate *)date consumedBytes:(NSInteger)consumedBytes cannedAcl:(NSString *)acl;
 
 /*!Initialize a new SCSBuchet immediately after memory for it has been allocated.
  \param name Name of the bucket.

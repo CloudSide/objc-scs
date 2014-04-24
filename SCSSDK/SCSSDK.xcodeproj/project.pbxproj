@@ -49,15 +49,9 @@
 		AD1B2CAA18FFDEFF00C29EA4 /* SCSDeleteBucketOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2C5018FFDEFF00C29EA4 /* SCSDeleteBucketOperation.h */; };
 		AD1B2CAB18FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5118FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m */; };
 		AD1B2CAD18FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5118FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m */; };
-		AD1B2CAF18FFDEFF00C29EA4 /* SCSGetACLOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2C5218FFDEFF00C29EA4 /* SCSGetACLOperation.h */; };
-		AD1B2CB018FFDEFF00C29EA4 /* SCSGetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5318FFDEFF00C29EA4 /* SCSGetACLOperation.m */; };
-		AD1B2CB218FFDEFF00C29EA4 /* SCSGetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5318FFDEFF00C29EA4 /* SCSGetACLOperation.m */; };
 		AD1B2CB418FFDEFF00C29EA4 /* SCSListBucketOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2C5418FFDEFF00C29EA4 /* SCSListBucketOperation.h */; };
 		AD1B2CB518FFDEFF00C29EA4 /* SCSListBucketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5518FFDEFF00C29EA4 /* SCSListBucketOperation.m */; };
 		AD1B2CB718FFDEFF00C29EA4 /* SCSListBucketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5518FFDEFF00C29EA4 /* SCSListBucketOperation.m */; };
-		AD1B2CB918FFDEFF00C29EA4 /* SCSSetACLOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2C5618FFDEFF00C29EA4 /* SCSSetACLOperation.h */; };
-		AD1B2CBA18FFDEFF00C29EA4 /* SCSSetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5718FFDEFF00C29EA4 /* SCSSetACLOperation.m */; };
-		AD1B2CBC18FFDEFF00C29EA4 /* SCSSetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5718FFDEFF00C29EA4 /* SCSSetACLOperation.m */; };
 		AD1B2CBE18FFDEFF00C29EA4 /* SCSAddObjectOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2C5918FFDEFF00C29EA4 /* SCSAddObjectOperation.h */; };
 		AD1B2CBF18FFDEFF00C29EA4 /* SCSAddObjectOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5A18FFDEFF00C29EA4 /* SCSAddObjectOperation.m */; };
 		AD1B2CC118FFDEFF00C29EA4 /* SCSAddObjectOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C5A18FFDEFF00C29EA4 /* SCSAddObjectOperation.m */; };
@@ -82,6 +76,12 @@
 		AD1B2CE118FFDEFF00C29EA4 /* SCSUpdateObjectOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2C6718FFDEFF00C29EA4 /* SCSUpdateObjectOperation.h */; };
 		AD1B2CE218FFDEFF00C29EA4 /* SCSUpdateObjectOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C6818FFDEFF00C29EA4 /* SCSUpdateObjectOperation.m */; };
 		AD1B2CE418FFDEFF00C29EA4 /* SCSUpdateObjectOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2C6818FFDEFF00C29EA4 /* SCSUpdateObjectOperation.m */; };
+		AD1B2D551908BAE400C29EA4 /* SCSGetACLOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2D511908BAE400C29EA4 /* SCSGetACLOperation.h */; };
+		AD1B2D561908BAE400C29EA4 /* SCSGetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D521908BAE400C29EA4 /* SCSGetACLOperation.m */; };
+		AD1B2D571908BAE400C29EA4 /* SCSGetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D521908BAE400C29EA4 /* SCSGetACLOperation.m */; };
+		AD1B2D581908BAE400C29EA4 /* SCSSetACLOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2D531908BAE400C29EA4 /* SCSSetACLOperation.h */; };
+		AD1B2D591908BAE400C29EA4 /* SCSSetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */; };
+		AD1B2D5A1908BAE400C29EA4 /* SCSSetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */; };
 		AD2E977E18F668920017D61C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2E977D18F668920017D61C /* Foundation.framework */; };
 		AD2E97A718F668A00017D61C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2E97A618F668A00017D61C /* Cocoa.framework */; };
 		AD9EBDCB18F68DC7006C59A8 /* SCSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9EBDCA18F68DC7006C59A8 /* SCSSDK.h */; };
@@ -129,12 +129,8 @@
 		AD1B2C4F18FFDEFF00C29EA4 /* SCSAddBucketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSAddBucketOperation.m; sourceTree = "<group>"; };
 		AD1B2C5018FFDEFF00C29EA4 /* SCSDeleteBucketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSDeleteBucketOperation.h; sourceTree = "<group>"; };
 		AD1B2C5118FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSDeleteBucketOperation.m; sourceTree = "<group>"; };
-		AD1B2C5218FFDEFF00C29EA4 /* SCSGetACLOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSGetACLOperation.h; sourceTree = "<group>"; };
-		AD1B2C5318FFDEFF00C29EA4 /* SCSGetACLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSGetACLOperation.m; sourceTree = "<group>"; };
 		AD1B2C5418FFDEFF00C29EA4 /* SCSListBucketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSListBucketOperation.h; sourceTree = "<group>"; };
 		AD1B2C5518FFDEFF00C29EA4 /* SCSListBucketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSListBucketOperation.m; sourceTree = "<group>"; };
-		AD1B2C5618FFDEFF00C29EA4 /* SCSSetACLOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSSetACLOperation.h; sourceTree = "<group>"; };
-		AD1B2C5718FFDEFF00C29EA4 /* SCSSetACLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSSetACLOperation.m; sourceTree = "<group>"; };
 		AD1B2C5918FFDEFF00C29EA4 /* SCSAddObjectOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSAddObjectOperation.h; sourceTree = "<group>"; };
 		AD1B2C5A18FFDEFF00C29EA4 /* SCSAddObjectOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSAddObjectOperation.m; sourceTree = "<group>"; };
 		AD1B2C5B18FFDEFF00C29EA4 /* SCSAddObjectRelaxOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSAddObjectRelaxOperation.h; sourceTree = "<group>"; };
@@ -151,6 +147,10 @@
 		AD1B2C6618FFDEFF00C29EA4 /* SCSListObjectOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSListObjectOperation.m; sourceTree = "<group>"; };
 		AD1B2C6718FFDEFF00C29EA4 /* SCSUpdateObjectOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSUpdateObjectOperation.h; sourceTree = "<group>"; };
 		AD1B2C6818FFDEFF00C29EA4 /* SCSUpdateObjectOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSUpdateObjectOperation.m; sourceTree = "<group>"; };
+		AD1B2D511908BAE400C29EA4 /* SCSGetACLOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSGetACLOperation.h; sourceTree = "<group>"; };
+		AD1B2D521908BAE400C29EA4 /* SCSGetACLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSGetACLOperation.m; sourceTree = "<group>"; };
+		AD1B2D531908BAE400C29EA4 /* SCSSetACLOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSSetACLOperation.h; sourceTree = "<group>"; };
+		AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSSetACLOperation.m; sourceTree = "<group>"; };
 		AD2E977A18F668920017D61C /* libSCSSDK_IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCSSDK_IOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2E977D18F668920017D61C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AD2E978118F668920017D61C /* SCSSDK_IOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCSSDK_IOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -212,6 +212,10 @@
 				AD1B2C4A18FFDEFF00C29EA4 /* SCSPersistentCFReadStreamPool.m */,
 				AD1B2C4B18FFDEFF00C29EA4 /* SCSTransferRateCalculator.h */,
 				AD1B2C4C18FFDEFF00C29EA4 /* SCSTransferRateCalculator.m */,
+				AD1B2D511908BAE400C29EA4 /* SCSGetACLOperation.h */,
+				AD1B2D521908BAE400C29EA4 /* SCSGetACLOperation.m */,
+				AD1B2D531908BAE400C29EA4 /* SCSSetACLOperation.h */,
+				AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */,
 			);
 			path = base_classes;
 			sourceTree = "<group>";
@@ -223,12 +227,8 @@
 				AD1B2C4F18FFDEFF00C29EA4 /* SCSAddBucketOperation.m */,
 				AD1B2C5018FFDEFF00C29EA4 /* SCSDeleteBucketOperation.h */,
 				AD1B2C5118FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m */,
-				AD1B2C5218FFDEFF00C29EA4 /* SCSGetACLOperation.h */,
-				AD1B2C5318FFDEFF00C29EA4 /* SCSGetACLOperation.m */,
 				AD1B2C5418FFDEFF00C29EA4 /* SCSListBucketOperation.h */,
 				AD1B2C5518FFDEFF00C29EA4 /* SCSListBucketOperation.m */,
-				AD1B2C5618FFDEFF00C29EA4 /* SCSSetACLOperation.h */,
-				AD1B2C5718FFDEFF00C29EA4 /* SCSSetACLOperation.m */,
 			);
 			path = buckets_operations;
 			sourceTree = "<group>";
@@ -329,12 +329,12 @@
 				AD1B2CA018FFDEFF00C29EA4 /* SCSTransferRateCalculator.h in Headers */,
 				AD1B2CCD18FFDEFF00C29EA4 /* SCSDeleteObjectOperation.h in Headers */,
 				AD1B2C8218FFDEFF00C29EA4 /* SCSMutableConnectionInfo.h in Headers */,
+				AD1B2D551908BAE400C29EA4 /* SCSGetACLOperation.h in Headers */,
 				AD1B2C8C18FFDEFF00C29EA4 /* SCSOperation.h in Headers */,
 				AD1B2C8718FFDEFF00C29EA4 /* SCSObject.h in Headers */,
 				AD1B2CDC18FFDEFF00C29EA4 /* SCSListObjectOperation.h in Headers */,
-				AD1B2CB918FFDEFF00C29EA4 /* SCSSetACLOperation.h in Headers */,
+				AD1B2D581908BAE400C29EA4 /* SCSSetACLOperation.h in Headers */,
 				AD1B2CC818FFDEFF00C29EA4 /* SCSCopyObjectOperation.h in Headers */,
-				AD1B2CAF18FFDEFF00C29EA4 /* SCSGetACLOperation.h in Headers */,
 				AD1B2C6E18FFDEFF00C29EA4 /* SCSBucket.h in Headers */,
 				AD1B2C9118FFDEFF00C29EA4 /* SCSOperationQueue.h in Headers */,
 				AD1B2CA518FFDEFF00C29EA4 /* SCSAddBucketOperation.h in Headers */,
@@ -424,17 +424,17 @@
 			files = (
 				AD1B2C6F18FFDEFF00C29EA4 /* SCSBucket.m in Sources */,
 				AD1B2C7E18FFDEFF00C29EA4 /* SCSHTTPURLBuilder.m in Sources */,
+				AD1B2D591908BAE400C29EA4 /* SCSSetACLOperation.m in Sources */,
 				AD1B2CAB18FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m in Sources */,
 				AD1B2C6A18FFDEFF00C29EA4 /* SCSACL.m in Sources */,
 				AD1B2CA618FFDEFF00C29EA4 /* SCSAddBucketOperation.m in Sources */,
 				AD1B2CC418FFDEFF00C29EA4 /* SCSAddObjectRelaxOperation.m in Sources */,
 				AD1B2C8318FFDEFF00C29EA4 /* SCSMutableConnectionInfo.m in Sources */,
+				AD1B2D561908BAE400C29EA4 /* SCSGetACLOperation.m in Sources */,
 				AD1B2C9718FFDEFF00C29EA4 /* SCSOwner.m in Sources */,
 				AD1B2CB518FFDEFF00C29EA4 /* SCSListBucketOperation.m in Sources */,
 				AD1B2CA118FFDEFF00C29EA4 /* SCSTransferRateCalculator.m in Sources */,
 				AD1B2CD818FFDEFF00C29EA4 /* SCSGetInfoObjectOperation.m in Sources */,
-				AD1B2CB018FFDEFF00C29EA4 /* SCSGetACLOperation.m in Sources */,
-				AD1B2CBA18FFDEFF00C29EA4 /* SCSSetACLOperation.m in Sources */,
 				AD1B2CBF18FFDEFF00C29EA4 /* SCSAddObjectOperation.m in Sources */,
 				AD1B2C7918FFDEFF00C29EA4 /* SCSExtensions.m in Sources */,
 				AD1B2CDD18FFDEFF00C29EA4 /* SCSListObjectOperation.m in Sources */,
@@ -456,17 +456,17 @@
 			files = (
 				AD1B2C7118FFDEFF00C29EA4 /* SCSBucket.m in Sources */,
 				AD1B2C8018FFDEFF00C29EA4 /* SCSHTTPURLBuilder.m in Sources */,
+				AD1B2D5A1908BAE400C29EA4 /* SCSSetACLOperation.m in Sources */,
 				AD1B2CAD18FFDEFF00C29EA4 /* SCSDeleteBucketOperation.m in Sources */,
 				AD1B2C6C18FFDEFF00C29EA4 /* SCSACL.m in Sources */,
 				AD1B2CA818FFDEFF00C29EA4 /* SCSAddBucketOperation.m in Sources */,
 				AD1B2CC618FFDEFF00C29EA4 /* SCSAddObjectRelaxOperation.m in Sources */,
 				AD1B2C8518FFDEFF00C29EA4 /* SCSMutableConnectionInfo.m in Sources */,
+				AD1B2D571908BAE400C29EA4 /* SCSGetACLOperation.m in Sources */,
 				AD1B2C9918FFDEFF00C29EA4 /* SCSOwner.m in Sources */,
 				AD1B2CB718FFDEFF00C29EA4 /* SCSListBucketOperation.m in Sources */,
 				AD1B2CA318FFDEFF00C29EA4 /* SCSTransferRateCalculator.m in Sources */,
 				AD1B2CDA18FFDEFF00C29EA4 /* SCSGetInfoObjectOperation.m in Sources */,
-				AD1B2CB218FFDEFF00C29EA4 /* SCSGetACLOperation.m in Sources */,
-				AD1B2CBC18FFDEFF00C29EA4 /* SCSSetACLOperation.m in Sources */,
 				AD1B2CC118FFDEFF00C29EA4 /* SCSAddObjectOperation.m in Sources */,
 				AD1B2C7B18FFDEFF00C29EA4 /* SCSExtensions.m in Sources */,
 				AD1B2CDF18FFDEFF00C29EA4 /* SCSListObjectOperation.m in Sources */,

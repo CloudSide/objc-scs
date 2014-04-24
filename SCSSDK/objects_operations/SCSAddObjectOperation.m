@@ -123,7 +123,7 @@ static NSString *SCSOperationInfoAddObjectOperationObjectKey = @"SCSOperationInf
     if ([self requestBodyContentData] != nil) {
         return [[self requestBodyContentData] length];
     } else if ([self requestBodyContentFilePath] != nil) {
-        return [[[self requestBodyContentFilePath] fileSizeForPath] longLongValue];
+        return [[[self requestBodyContentFilePath] fileSizeForPath] unsignedIntegerValue];
     }
     
     return 0;

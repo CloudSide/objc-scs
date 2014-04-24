@@ -71,7 +71,7 @@ NSString *SCSResponseDataObjectMetadataFileMetaKey =    @"file-meta";
 
 @synthesize aclDict = _aclDict;
 
-- (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key userDefinedMetadata:(NSDictionary *)udmd metadata:(NSDictionary *)md dataSourceInfo:(NSDictionary *)info fastACL:(NSString *)acl {
+- (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key userDefinedMetadata:(NSDictionary *)udmd metadata:(NSDictionary *)md dataSourceInfo:(NSDictionary *)info cannedAcl:(NSString *)acl {
     
     self = [super init];
     
@@ -108,7 +108,7 @@ NSString *SCSResponseDataObjectMetadataFileMetaKey =    @"file-meta";
 
 - (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key userDefinedMetadata:(NSDictionary *)udmd metadata:(NSDictionary *)md dataSourceInfo:(NSDictionary *)info
 {
-    return [self initWithBucket:bucket key:key userDefinedMetadata:udmd metadata:md dataSourceInfo:info fastACL:nil];
+    return [self initWithBucket:bucket key:key userDefinedMetadata:udmd metadata:md dataSourceInfo:info cannedAcl:nil];
 }
 
 - (id)initWithBucket:(SCSBucket *)bucket key:(NSString *)key userDefinedMetadata:(NSDictionary *)udmd metadata:(NSDictionary *)md

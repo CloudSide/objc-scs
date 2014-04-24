@@ -127,11 +127,11 @@
     
     NSString *portString = @"";
     if ([protocolScheme compare:@"http" options:NSCaseInsensitiveSearch] && (port != 0 && port != 80)) {
-        portString = [NSString stringWithFormat:@"%ld", port];
+        portString = [NSString stringWithFormat:@"%d", port];
     } else if ([protocolScheme compare:@"https" options:NSCaseInsensitiveSearch] && (port != 0 && port != 443)) {
-        portString = [NSString stringWithFormat:@"%ld", port];
+        portString = [NSString stringWithFormat:@"%d", port];
     } else {
-        portString = [NSString stringWithFormat:@"%ld", port];
+        portString = [NSString stringWithFormat:@"%d", port];
     }
     
     NSMutableString *urlString = [NSMutableString string];
