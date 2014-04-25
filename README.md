@@ -307,7 +307,11 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
     
+	//grantee:被授权对象：AccessKeyId、SCSACLAnonymouseUsersGroupGranteeID、SCSACLCanonicalUserGroupGranteeID
     SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:SCSACLCanonicalUserGroupGranteeID] autorelease];
+
+	//grant:授权类型：SCSFastACLPrivate、SCSFastACLPublicRead、SCSFastACLPublicReadWrite、
+	//				 SCSFastACLAuthenticatedRead、SCSFastACLBucketOwnerRead、SCSFastACLBucketOwnerFullControl
     SCSGrant *grant = [[[SCSGrant alloc] initWithGrantArray:@[SCSACLGrantRead, SCSACLGrantReadACP, SCSACLGrantWrite, SCSACLGrantWriteACP]] autorelease];
     SCSACL *acl = [[[SCSACL alloc] initWithGranteesAndGrants:[NSDictionary dictionaryWithObject:grant forKey:[grantee uid]]] autorelease];
     
@@ -335,6 +339,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 
     SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"文件所在Bucket名称"] autorelease];
     
+	//具体实现请参考设置Bucket的ACL信息的Example
     SCSGrantee *grantee = [[[SCSGrantee alloc] initWithUid:@"被授权的Grantee ID"] autorelease];
     SCSGrant *grant = [[[SCSGrant alloc] initWithGrantArray:@[被授权的Grant数组]] autorelease];
     SCSACL *acl = [[[SCSACL alloc] initWithGranteesAndGrants:[NSDictionary dictionaryWithObject:grant forKey:[grantee uid]]] autorelease];
