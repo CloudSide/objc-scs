@@ -82,6 +82,9 @@
 		AD1B2D581908BAE400C29EA4 /* SCSSetACLOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2D531908BAE400C29EA4 /* SCSSetACLOperation.h */; };
 		AD1B2D591908BAE400C29EA4 /* SCSSetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */; };
 		AD1B2D5A1908BAE400C29EA4 /* SCSSetACLOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */; };
+		AD1B2D5D1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1B2D5B1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.h */; };
+		AD1B2D5E1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D5C1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m */; };
+		AD1B2D5F1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1B2D5C1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m */; };
 		AD2E977E18F668920017D61C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2E977D18F668920017D61C /* Foundation.framework */; };
 		AD2E97A718F668A00017D61C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2E97A618F668A00017D61C /* Cocoa.framework */; };
 		AD9EBDCB18F68DC7006C59A8 /* SCSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9EBDCA18F68DC7006C59A8 /* SCSSDK.h */; };
@@ -151,6 +154,8 @@
 		AD1B2D521908BAE400C29EA4 /* SCSGetACLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSGetACLOperation.m; sourceTree = "<group>"; };
 		AD1B2D531908BAE400C29EA4 /* SCSSetACLOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSSetACLOperation.h; sourceTree = "<group>"; };
 		AD1B2D541908BAE400C29EA4 /* SCSSetACLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSSetACLOperation.m; sourceTree = "<group>"; };
+		AD1B2D5B1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSInitiateMultipartUploadOperation.h; sourceTree = "<group>"; };
+		AD1B2D5C1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSInitiateMultipartUploadOperation.m; sourceTree = "<group>"; };
 		AD2E977A18F668920017D61C /* libSCSSDK_IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCSSDK_IOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2E977D18F668920017D61C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AD2E978118F668920017D61C /* SCSSDK_IOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCSSDK_IOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -252,6 +257,8 @@
 				AD1B2C6618FFDEFF00C29EA4 /* SCSListObjectOperation.m */,
 				AD1B2C6718FFDEFF00C29EA4 /* SCSUpdateObjectOperation.h */,
 				AD1B2C6818FFDEFF00C29EA4 /* SCSUpdateObjectOperation.m */,
+				AD1B2D5B1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.h */,
+				AD1B2D5C1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m */,
 			);
 			path = objects_operations;
 			sourceTree = "<group>";
@@ -333,6 +340,7 @@
 				AD1B2C8C18FFDEFF00C29EA4 /* SCSOperation.h in Headers */,
 				AD1B2C8718FFDEFF00C29EA4 /* SCSObject.h in Headers */,
 				AD1B2CDC18FFDEFF00C29EA4 /* SCSListObjectOperation.h in Headers */,
+				AD1B2D5D1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.h in Headers */,
 				AD1B2D581908BAE400C29EA4 /* SCSSetACLOperation.h in Headers */,
 				AD1B2CC818FFDEFF00C29EA4 /* SCSCopyObjectOperation.h in Headers */,
 				AD1B2C6E18FFDEFF00C29EA4 /* SCSBucket.h in Headers */,
@@ -438,6 +446,7 @@
 				AD1B2CBF18FFDEFF00C29EA4 /* SCSAddObjectOperation.m in Sources */,
 				AD1B2C7918FFDEFF00C29EA4 /* SCSExtensions.m in Sources */,
 				AD1B2CDD18FFDEFF00C29EA4 /* SCSListObjectOperation.m in Sources */,
+				AD1B2D5E1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m in Sources */,
 				AD1B2C9C18FFDEFF00C29EA4 /* SCSPersistentCFReadStreamPool.m in Sources */,
 				AD1B2CD318FFDEFF00C29EA4 /* SCSDownloadObjectOperation.m in Sources */,
 				AD1B2CC918FFDEFF00C29EA4 /* SCSCopyObjectOperation.m in Sources */,
@@ -470,6 +479,7 @@
 				AD1B2CC118FFDEFF00C29EA4 /* SCSAddObjectOperation.m in Sources */,
 				AD1B2C7B18FFDEFF00C29EA4 /* SCSExtensions.m in Sources */,
 				AD1B2CDF18FFDEFF00C29EA4 /* SCSListObjectOperation.m in Sources */,
+				AD1B2D5F1909EB8E00C29EA4 /* SCSInitiateMultipartUploadOperation.m in Sources */,
 				AD1B2C9E18FFDEFF00C29EA4 /* SCSPersistentCFReadStreamPool.m in Sources */,
 				AD1B2CD518FFDEFF00C29EA4 /* SCSDownloadObjectOperation.m in Sources */,
 				AD1B2CCB18FFDEFF00C29EA4 /* SCSCopyObjectOperation.m in Sources */,

@@ -58,7 +58,8 @@
                 || [queryKey isEqualToString:@"uploads"]
                 || [queryKey isEqualToString:@"part"]
                 || [queryKey isEqualToString:@"copy"]
-                || [queryKey isEqualToString:@"website"]) {
+                || [queryKey isEqualToString:@"website"]
+                || [queryKey isEqualToString:@"multipart"]) {
                 
                 [encodedQueries insertObject:[self escapedQueryComponentStringWithString:queryKey] atIndex:0];
             } else {

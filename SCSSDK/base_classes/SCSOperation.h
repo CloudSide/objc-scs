@@ -29,6 +29,8 @@ extern NSString *SCSOperationKindObjectUpdate;
 extern NSString *SCSOperationKindGetACL;
 extern NSString *SCSOperationKindSetACL;
 
+extern NSString *SCSOperationKindInitiateMultipartUpload;
+
 typedef enum _SCSOperationState {
     SCSOperationPending = 0,
     SCSOperationPendingRetry = 1,

@@ -38,7 +38,7 @@ self.queue = [[[SCSOperationQueue alloc] initWithDelegate:self] autorelease];
 //若全局只使用唯一的queue，方法如下：
 //[SCSOperationQueue sharedQueue];
 
-//可设置delegate用来设置队列的最大长度，详情参考代码文档
+//可设置delegate用来设置队列的最大并发数，详情参考代码文档
 //[[SCSOperationQueue sharedQueue] setDelegate:self];
 ```
 

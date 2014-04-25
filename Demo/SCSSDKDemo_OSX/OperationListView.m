@@ -11,6 +11,7 @@
 #import "CustomCellView.h"
 #import "SCSSDK.h"
 
+
 @implementation OperationListView {
     
     AppDelegate *_appDelegate;
@@ -58,7 +59,7 @@
 
 #pragma mark - table view data source
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-	return 17;
+	return 18;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
@@ -125,6 +126,9 @@
         }
         if (row == 16) {
             cell.textLabel.stringValue = @"16: Object rul";
+        }
+        if (row == 17) {
+            cell.textLabel.stringValue = @"17: Multipart test";
         }
         
 		return cell;
@@ -255,6 +259,13 @@
         _appDelegate.resultView.theTextView.string = @"";
         [self scsGetObjectURL];
         _appDelegate.detailView.string = @"\n\n通过url授权，获取object的url，方法：scsGetObjectURL";
+    }
+    
+    //Multipart test
+    if (row == 17) {
+        _appDelegate.resultView.theTextView.string = @"";
+        [self scsMultipartTest];
+        _appDelegate.detailView.string = @"";
     }
 }
 
@@ -455,6 +466,15 @@
     _appDelegate.resultView.theTextView.string = [[object urlWithSign:YES expires:expiresDate ip:nil security:NO] absoluteString];
 }
 
+- (void)scsMultipartTest {
+    
+    SCSBucket *bucket = [[[SCSBucket alloc] initWithName:@"demo-001"] autorelease];
+    SCSObject *object = [[[SCSObject alloc] initWithBucket:bucket key:[NSString stringWithFormat:@"demo_pic_0.png"]] autorelease];
+    
+    SCSInitiateMultipartUploadOperation *op = [[[SCSInitiateMultipartUploadOperation alloc] initWithObject:object] autorelease];
+    
+    [[SCSOperationQueue sharedQueue] addToCurrentOperations:op];
+}
 
 #pragma mark - SCSOperationQueueNotifications
 

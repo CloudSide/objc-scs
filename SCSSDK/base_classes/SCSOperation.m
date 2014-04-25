@@ -26,6 +26,8 @@ NSString *SCSOperationKindObjectUpdate =        @"Object update";
 NSString *SCSOperationKindGetACL =              @"Get acl";
 NSString *SCSOperationKindSetACL =              @"Set acl";
 
+NSString *SCSOperationKindInitiateMultipartUpload = @"Initiate multipart upload";
+
 @interface SCSOperation (SCSOperationPrivateAPI)
 
 - (void)handleNetworkEvent:(CFStreamEventType)eventType;

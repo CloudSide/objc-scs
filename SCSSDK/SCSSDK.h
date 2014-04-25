@@ -34,3 +34,5 @@
 
 #import "SCSGetACLOperation.h"
 #import "SCSSetACLOperation.h"
+
+#import "SCSInitiateMultipartUploadOperation.h"

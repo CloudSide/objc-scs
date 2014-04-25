@@ -286,6 +286,8 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
         [stringToSign appendString:@"?copy"];
     } else if ([requestURLQueryLower  hasPrefix:@"website"]) {
         [stringToSign appendString:@"?website"];
+    } else if ([requestURLQueryLower  hasPrefix:@"multipart"]) {
+        [stringToSign appendString:@"?multipart"];
     }
     
     
@@ -330,7 +332,7 @@ static SCSConnectionInfo *kSharedConnectionInfo = nil;
         }
     }
     
-//    NSLog(@"%@", stringToSign);
+    NSLog(@"%@", stringToSign);
     
     CFHTTPMessageRef httpRequest = NULL;
     NSString *authorization = nil;

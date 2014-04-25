@@ -60,13 +60,13 @@
     SCSConnectionInfo *connectionInfo = [[SCSConnectionInfo alloc] initWithAccessKey:accessKey secretKey:secretKey userInfo:nil secureConnection:NO];
     [SCSConnectionInfo setSharedConnectionInfo:[connectionInfo autorelease]];
     
-    OperationListView *operationListView = [[[OperationListView alloc] initWithFrame:NSMakeRect(15, 15, 180, 518)] autorelease];
+    OperationListView *operationListView = [[[OperationListView alloc] initWithFrame:NSMakeRect(15, 15, 180, 547)] autorelease];
     [self.window.contentView addSubview:operationListView];
     
-    self.detailView = [[[OperationDetailView alloc] initWithFrame:NSMakeRect(200, 433, 570, 100)] autorelease];
+    self.detailView = [[[OperationDetailView alloc] initWithFrame:NSMakeRect(200, 462, 570, 100)] autorelease];
     [self.window.contentView addSubview:_detailView];
     
-    self.resultView = [[[OperationResultView alloc] initWithFrame:NSMakeRect(200, 15, 570, 408)] autorelease];
+    self.resultView = [[[OperationResultView alloc] initWithFrame:NSMakeRect(200, 15, 570, 437)] autorelease];
     [self.window.contentView addSubview:_resultView];
 }
 
